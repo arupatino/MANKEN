@@ -2,11 +2,9 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#f5f1e8">
-
+<meta name="theme-color" content="#f6f4ed">
 <title>馬ん軒｜指定席食堂</title>
 
 <style>
@@ -28,11 +26,10 @@ body{
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     sans-serif;
-
-  background:#f5f1e8;
-  color:#242820;
+  background:#f6f4ed;
+  color:#252923;
   line-height:1.7;
-  padding-bottom:82px;
+  padding-bottom:78px;
 }
 
 /* =========================
@@ -43,13 +40,13 @@ body{
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#171a15;
+  background:#171b17;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  animation:openingHide 1.8s ease forwards;
-  animation-delay:1.2s;
+  animation:openingHide .5s ease forwards;
+  animation-delay:1.35s;
   pointer-events:none;
 }
 
@@ -57,88 +54,102 @@ body{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(
-      90deg,
-      transparent 0 46%,
-      rgba(255,255,255,.18) 46% 46.5%,
-      transparent 46.5% 53.5%,
-      rgba(255,255,255,.18) 53.5% 54%,
-      transparent 54%
+    repeating-linear-gradient(
+      165deg,
+      rgba(255,255,255,.025) 0 2px,
+      transparent 2px 18px
     ),
     linear-gradient(
-      #191d17,
-      #3d3427
+      180deg,
+      #263027 0%,
+      #3b3428 58%,
+      #191d18 100%
     );
 }
 
-.opening-track::after{
+.opening-track:before{
   content:"";
   position:absolute;
+  width:130%;
+  height:230px;
+  left:-15%;
+  bottom:12%;
+  border-top:2px solid rgba(255,255,255,.55);
+  border-radius:50%;
+  transform:rotate(-7deg);
+}
+
+.opening-track:after{
+  content:"";
+  position:absolute;
+  width:120%;
+  height:160px;
   left:-10%;
-  right:-10%;
-  bottom:20%;
-  height:2px;
-  background:#d4ad52;
-  transform:skewY(-7deg);
-  box-shadow:0 18px rgba(255,255,255,.25);
+  bottom:22%;
+  border-top:1px solid #d0aa52;
+  border-radius:50%;
+  transform:rotate(-7deg);
 }
 
 .opening-content{
   position:relative;
-  z-index:2;
+  z-index:3;
   text-align:center;
   color:white;
 }
 
 .race-start{
-  font-size:12px;
+  font-size:11px;
   letter-spacing:.35em;
   opacity:0;
-  animation:startText .35s ease forwards;
-  animation-delay:.25s;
+  animation:fadeIn .3s forwards;
+  animation-delay:.2s;
 }
 
 .opening-title{
-  margin-top:10px;
-  font-size:42px;
+  margin-top:8px;
+  font-size:44px;
   font-weight:900;
   letter-spacing:.12em;
   opacity:0;
-  transform:translateY(10px);
-  animation:titleIn .4s ease forwards;
-  animation-delay:.55s;
+  animation:titleIn .35s forwards;
+  animation-delay:.45s;
 }
 
 .opening-sub{
-  margin-top:5px;
-  font-size:10px;
-  letter-spacing:.25em;
+  margin-top:3px;
+  font-size:9px;
+  letter-spacing:.28em;
   opacity:0;
-  animation:startText .35s ease forwards;
-  animation-delay:.85s;
+  animation:fadeIn .3s forwards;
+  animation-delay:.75s;
 }
 
 .horse{
   position:absolute;
-  left:-20%;
-  bottom:25%;
-  font-size:70px;
-  filter:grayscale(1) brightness(0) invert(1);
-  opacity:.9;
-  animation:horseRun 1s cubic-bezier(.7,0,.9,.4) forwards;
-  animation-delay:.55s;
+  left:-15%;
+  bottom:29%;
+  font-size:64px;
+  color:white;
+  opacity:.85;
+  animation:horseRun .9s ease-in forwards;
+  animation-delay:.45s;
 }
 
 @keyframes horseRun{
-  from{left:-20%;}
-  to{left:110%;}
+  from{left:-15%}
+  to{left:110%}
 }
 
-@keyframes startText{
-  to{opacity:1;}
+@keyframes fadeIn{
+  to{opacity:1}
 }
 
 @keyframes titleIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
   to{
     opacity:1;
     transform:translateY(0);
@@ -152,6 +163,7 @@ body{
   }
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -159,19 +171,19 @@ body{
 header{
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
   height:62px;
-
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(12px);
-
-  border-bottom:1px solid #ddd8cc;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
   padding:0 18px;
+
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid #ddd9cf;
 }
 
 .logo{
@@ -183,14 +195,15 @@ header{
 .logo-mark{
   width:36px;
   height:36px;
-  border-radius:50%;
 
-  background:#253127;
-  color:#fff;
+  border-radius:50%;
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  background:#29372c;
+  color:white;
 
   font-size:20px;
 }
@@ -203,69 +216,105 @@ header{
 
 .logo-sub{
   font-size:8px;
+  color:#7c8178;
   letter-spacing:.16em;
-  color:#7b806f;
 }
+
 
 /* =========================
    HERO
 ========================= */
 
 .hero{
-  min-height:540px;
-
   position:relative;
+  min-height:555px;
   overflow:hidden;
 
   display:flex;
   align-items:flex-end;
 
+  color:white;
+
   background:
     linear-gradient(
       180deg,
-      rgba(32,46,35,.08),
-      rgba(32,38,29,.75)
+      rgba(31,50,35,.15),
+      rgba(25,28,23,.82)
     ),
-    url("https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80")
-    center/cover;
+    #718067;
 }
 
-.hero::after{
+/* 芝 */
+.hero:before{
   content:"";
   position:absolute;
-  inset:auto 0 0;
-  height:45%;
+  inset:0;
 
-  background:linear-gradient(
-    transparent,
-    rgba(0,0,0,.75)
-  );
+  background:
+    repeating-linear-gradient(
+      175deg,
+      rgba(255,255,255,.035) 0 2px,
+      transparent 2px 13px
+    ),
+    linear-gradient(
+      180deg,
+      #78906f 0%,
+      #52664c 45%,
+      #4a3928 46%,
+      #5b4631 100%
+    );
+}
+
+/* 競馬場のコース */
+.hero:after{
+  content:"";
+  position:absolute;
+
+  width:145%;
+  height:390px;
+
+  left:-22%;
+  bottom:-120px;
+
+  border:3px solid rgba(255,255,255,.68);
+  border-radius:50%;
+
+  box-shadow:
+    0 -17px 0 -15px rgba(215,174,80,.9),
+    0 -35px 0 -33px rgba(255,255,255,.4);
+
+  transform:rotate(-7deg);
 }
 
 .hero-content{
   position:relative;
-  z-index:2;
-  color:white;
-  padding:30px 20px 38px;
+  z-index:3;
+
   width:100%;
+  padding:35px 20px 38px;
 }
 
 .hero-label{
   display:inline-block;
-  padding:5px 10px;
-  border:1px solid rgba(255,255,255,.55);
-  background:rgba(0,0,0,.22);
 
-  font-size:10px;
+  padding:4px 9px;
+
+  border:1px solid rgba(255,255,255,.6);
+  background:rgba(0,0,0,.16);
+
+  font-size:9px;
   letter-spacing:.2em;
 }
 
 .hero h1{
-  margin-top:13px;
-  font-size:45px;
+  margin-top:12px;
+
+  font-size:48px;
   line-height:1.1;
   font-weight:900;
   letter-spacing:.08em;
+
+  text-shadow:0 3px 15px rgba(0,0,0,.3);
 }
 
 .hero-copy{
@@ -275,50 +324,52 @@ header{
 }
 
 .hero-info{
-  margin-top:22px;
-
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:8px;
+  margin-top:21px;
 }
 
 .hero-box{
   padding:12px;
-  background:rgba(255,255,255,.93);
-  color:#252920;
-  border-radius:8px;
+
+  background:rgba(255,255,255,.94);
+  color:#252923;
+
+  border-radius:9px;
 }
 
 .hero-box small{
   display:block;
+  color:#777b73;
   font-size:9px;
-  color:#777;
   letter-spacing:.12em;
 }
 
 .hero-box strong{
   display:block;
-  font-size:16px;
   margin-top:2px;
+  font-size:16px;
 }
+
 
 /* =========================
    COMMON
 ========================= */
 
 section{
-  padding:58px 18px;
+  padding:55px 18px;
 }
 
 .section-head{
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 .section-label{
+  color:#92763b;
   font-size:10px;
-  letter-spacing:.22em;
-  color:#8a7440;
   font-weight:800;
+  letter-spacing:.22em;
 }
 
 .section-title{
@@ -328,45 +379,49 @@ section{
 }
 
 .section-copy{
-  margin-top:5px;
+  margin-top:4px;
+  color:#7a7e75;
   font-size:12px;
-  color:#777b70;
 }
+
 
 /* =========================
    TODAY
 ========================= */
 
 .today{
-  padding-top:35px;
-  padding-bottom:25px;
+  padding-top:32px;
+  padding-bottom:28px;
 }
 
 .today-card{
-  background:#fff;
-  border:1px solid #ded9cd;
-  border-radius:16px;
   overflow:hidden;
 
-  box-shadow:0 8px 25px rgba(38,40,31,.06);
+  background:white;
+
+  border:1px solid #dedad0;
+  border-radius:15px;
+
+  box-shadow:0 7px 25px rgba(30,35,27,.06);
 }
 
 .today-top{
-  padding:14px 16px;
-  background:#273529;
-  color:white;
-
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+
+  padding:14px 16px;
+
+  background:#29372c;
+  color:white;
 }
 
 .today-status{
+  font-size:16px;
   font-weight:900;
-  font-size:17px;
 }
 
-.today-status::before{
+.today-status:before{
   content:"";
   display:inline-block;
 
@@ -374,21 +429,20 @@ section{
   height:8px;
   margin-right:7px;
 
+  background:#73c98a;
   border-radius:50%;
-  background:#72c98a;
 }
 
 .today-race{
   font-size:9px;
   letter-spacing:.15em;
-  opacity:.75;
+  opacity:.7;
 }
 
 .today-main{
-  padding:18px 16px;
-
   display:grid;
   grid-template-columns:1fr 1fr;
+  padding:18px 16px;
 }
 
 .today-main div+div{
@@ -397,195 +451,239 @@ section{
 }
 
 .today-main small{
+  color:#858980;
   font-size:10px;
-  color:#85887e;
 }
 
 .today-main strong{
   display:block;
-  font-size:20px;
+  font-size:19px;
 }
+
 
 /* =========================
-   MENU
+   RECOMMEND MENU
 ========================= */
 
-.menu-section{
-  background:#fff;
+.recommend-section{
+  background:white;
 }
 
-.menu-list{
+.recommend-list{
   display:grid;
   gap:12px;
 }
 
-.menu-card{
+.recommend-card{
   display:grid;
-  grid-template-columns:100px 1fr;
-  min-height:110px;
+  grid-template-columns:105px 1fr;
 
-  background:#f8f6f0;
-  border:1px solid #e1ddd3;
-  border-radius:13px;
+  min-height:115px;
 
   overflow:hidden;
+
+  background:#f8f6f0;
+
+  border:1px solid #dfdbd1;
+  border-radius:13px;
 }
 
-.menu-image{
-  background:
-    linear-gradient(
-      135deg,
-      #ded8c9,
-      #b9b19f
-    );
-
+.food-image{
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:36px;
+  font-size:38px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d9d2c3,
+      #b9ae99
+    );
 }
 
-.menu-info{
+.food-info{
   padding:13px 14px;
 }
 
-.menu-info h3{
+.food-info h3{
   font-size:16px;
   font-weight:900;
 }
 
-.menu-info p{
+.food-info p{
   margin-top:2px;
-  color:#777b70;
+  color:#777b72;
   font-size:11px;
 }
 
-.price{
+.food-price{
   margin-top:7px;
   font-size:15px;
   font-weight:900;
 }
 
-.recommend{
+.badge{
   display:inline-block;
-  margin-left:5px;
+
+  margin-left:4px;
   padding:2px 5px;
 
-  background:#bd8e35;
+  background:#bd903b;
   color:white;
 
-  font-size:8px;
   border-radius:3px;
+
+  font-size:8px;
   vertical-align:middle;
 }
+
+.more-button{
+  display:block;
+
+  margin-top:17px;
+  padding:13px;
+
+  text-align:center;
+  text-decoration:none;
+
+  border:1px solid #c9c4b8;
+  border-radius:8px;
+
+  color:#29372c;
+  background:#fff;
+
+  font-size:12px;
+  font-weight:900;
+}
+
 
 /* =========================
    DRINK
 ========================= */
 
-.drink{
+.drink-section{
   background:#eeeae0;
 }
 
-.drink-grid{
+.drink-list{
   display:grid;
-  grid-template-columns:1fr 1fr;
   gap:10px;
 }
 
 .drink-card{
-  padding:17px 14px;
+  display:flex;
+  align-items:center;
+
+  padding:14px;
 
   background:white;
-  border-radius:12px;
 
-  border:1px solid #ddd8ca;
+  border:1px solid #ddd8cd;
+  border-radius:11px;
 }
 
 .drink-icon{
-  font-size:28px;
+  width:52px;
+
+  font-size:27px;
+  text-align:center;
 }
 
-.drink-card h3{
-  margin-top:4px;
+.drink-info{
+  flex:1;
+  margin-left:8px;
+}
+
+.drink-info h3{
   font-size:15px;
 }
 
-.drink-card p{
+.drink-info p{
+  color:#777b72;
   font-size:10px;
-  color:#777;
 }
 
 .drink-price{
-  margin-top:6px;
+  font-size:14px;
   font-weight:900;
 }
 
+.drink-more{
+  margin-top:15px;
+}
+
+
 /* =========================
-   PADDOCK
+   ABOUT
 ========================= */
 
-.paddock{
-  background:#f5f1e8;
+.about{
+  background:#f6f4ed;
 }
 
-.paddock-card{
-  background:#29372c;
-  color:white;
-
-  border-radius:16px;
-  padding:23px 20px;
-
+.about-card{
   position:relative;
   overflow:hidden;
+
+  padding:23px 20px;
+
+  color:white;
+  background:#29372c;
+
+  border-radius:16px;
 }
 
-.paddock-card::after{
+.about-card:after{
   content:"";
 
   position:absolute;
-  right:-45px;
-  bottom:-45px;
+  right:-50px;
+  bottom:-50px;
 
-  width:150px;
-  height:150px;
+  width:160px;
+  height:160px;
 
-  border:1px solid rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.16);
   border-radius:50%;
 }
 
-.paddock-card h3{
-  font-size:22px;
+.about-card h3{
+  font-size:21px;
+  font-weight:900;
 }
 
-.paddock-card p{
-  margin-top:9px;
+.about-card p{
+  margin-top:10px;
+  color:#d3dbd2;
   font-size:12px;
-  color:#d6ddd5;
 }
+
 
 /* =========================
    SCHEDULE
 ========================= */
 
 .schedule{
-  background:#fff;
+  background:white;
 }
 
 .schedule-card{
+  overflow:hidden;
+
   background:#f7f5ef;
+
   border:1px solid #ddd9ce;
   border-radius:14px;
-  overflow:hidden;
 }
 
 .schedule-row{
-  padding:15px 16px;
-
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+
+  padding:15px 16px;
 
   border-bottom:1px solid #e2ded5;
 }
@@ -595,13 +693,15 @@ section{
 }
 
 .schedule-date{
+  display:block;
+  font-size:14px;
   font-weight:900;
 }
 
 .schedule-day{
   display:block;
+  color:#858980;
   font-size:9px;
-  color:#85877f;
 }
 
 .open{
@@ -611,35 +711,36 @@ section{
 }
 
 .closed{
-  color:#9a3d35;
+  color:#98433b;
   font-size:11px;
   font-weight:900;
 }
+
 
 /* =========================
    ACCESS
 ========================= */
 
 .access{
-  background:#273529;
+  background:#29372c;
   color:white;
 }
 
 .access .section-label{
-  color:#d2af5c;
+  color:#d3ad57;
 }
 
 .access .section-copy{
-  color:#bfc7bd;
+  color:#bdc6bc;
 }
 
 .access-box{
   padding:20px;
 
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:14px;
-
   background:rgba(255,255,255,.06);
+
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:14px;
 }
 
 .access-main{
@@ -648,8 +749,8 @@ section{
 }
 
 .access-detail{
-  margin-top:9px;
-  color:#d4dbd3;
+  margin-top:8px;
+  color:#d3dad1;
   font-size:12px;
 }
 
@@ -660,26 +761,106 @@ section{
   padding:13px;
 
   text-align:center;
+  text-decoration:none;
+
+  color:#242a24;
+  background:#d3ad57;
 
   border-radius:8px;
 
-  background:#d4ad52;
-  color:#1f251f;
-
-  text-decoration:none;
-  font-weight:900;
   font-size:13px;
+  font-weight:900;
 }
+
+
+/* =========================
+   MENU PAGE
+========================= */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  padding:40px 18px 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #29372c,
+      #52644e
+    );
+
+  color:white;
+}
+
+.page-title small{
+  color:#d3ad57;
+  font-size:9px;
+  letter-spacing:.2em;
+}
+
+.page-title h1{
+  margin-top:3px;
+  font-size:32px;
+  font-weight:900;
+}
+
+.menu-full{
+  padding:25px 18px;
+}
+
+.menu-category{
+  margin-bottom:35px;
+}
+
+.category-title{
+  margin-bottom:12px;
+
+  padding-bottom:8px;
+
+  border-bottom:2px solid #29372c;
+
+  font-size:19px;
+  font-weight:900;
+}
+
+.full-menu-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:13px 3px;
+
+  border-bottom:1px solid #dedbd2;
+}
+
+.full-menu-name{
+  font-size:13px;
+  font-weight:700;
+}
+
+.full-menu-price{
+  font-size:13px;
+  font-weight:900;
+}
+
 
 /* =========================
    FOOTER
 ========================= */
 
 footer{
-  padding:35px 18px 100px;
+  padding:35px 18px 95px;
+
   text-align:center;
-  background:#1e261f;
-  color:#aeb6ab;
+
+  background:#1f281f;
+  color:#aeb7ad;
 }
 
 .footer-logo{
@@ -689,9 +870,10 @@ footer{
 }
 
 footer p{
-  margin-top:5px;
-  font-size:10px;
+  margin-top:4px;
+  font-size:9px;
 }
+
 
 /* =========================
    BOTTOM NAV
@@ -703,55 +885,57 @@ footer p{
   right:0;
   bottom:0;
 
-  height:76px;
-
   z-index:500;
+
+  height:76px;
 
   display:grid;
   grid-template-columns:repeat(4,1fr);
 
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(15px);
 
-  border-top:1px solid #ddd8cc;
+  border-top:1px solid #ddd9d0;
 }
 
 .nav-item{
-  text-decoration:none;
-  color:#73776e;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
 
+  gap:3px;
+
+  color:#747970;
+
+  text-decoration:none;
+
   font-size:9px;
   font-weight:800;
-
-  gap:3px;
 }
 
 .nav-icon{
-  width:30px;
-  height:30px;
-
-  border-radius:50%;
+  width:31px;
+  height:31px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:18px;
+  border-radius:50%;
+
+  font-size:17px;
 }
 
 .nav-item.active{
-  color:#26362b;
+  color:#29372c;
 }
 
 .nav-item.active .nav-icon{
-  background:#26362b;
   color:white;
+  background:#29372c;
 }
+
 
 /* =========================
    DESKTOP
@@ -762,40 +946,38 @@ footer p{
   body{
     max-width:900px;
     margin:auto;
+
     box-shadow:0 0 40px rgba(0,0,0,.1);
   }
 
   .bottom-nav{
     max-width:900px;
     left:50%;
+    right:auto;
+
+    width:100%;
+
     transform:translateX(-50%);
   }
 
   .hero{
-    min-height:620px;
+    min-height:650px;
   }
 
   .hero h1{
     font-size:58px;
   }
 
-  section{
-    padding-left:45px;
-    padding-right:45px;
-  }
-
-  .menu-list{
+  .recommend-list{
     grid-template-columns:1fr 1fr;
-  }
-
-  .drink-grid{
-    grid-template-columns:repeat(4,1fr);
   }
 }
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================
      OPENING
@@ -834,18 +1016,11 @@ footer p{
 
   <div class="logo">
 
-    <div class="logo-mark">
-      ♞
-    </div>
+    <div class="logo-mark">♞</div>
 
     <div>
-      <div class="logo-text">
-        馬ん軒
-      </div>
-
-      <div class="logo-sub">
-        FOOD & DRINK
-      </div>
+      <div class="logo-text">馬ん軒</div>
+      <div class="logo-sub">FOOD & DRINK</div>
     </div>
 
   </div>
@@ -854,432 +1029,618 @@ footer p{
 
 
 <!-- =========================
-     HERO
+     HOME
 ========================= -->
 
-<section class="hero">
+<main id="homePage" class="page active">
 
-  <div class="hero-content">
 
-    <span class="hero-label">
-      RACECOURSE DINING
-    </span>
+  <!-- HERO -->
 
-    <h1>
-      馬ん軒
-    </h1>
+  <section class="hero" id="home">
 
-    <p class="hero-copy">
-      レースを眺めながら、うまい飯。
-    </p>
+    <div class="hero-content">
 
-    <div class="hero-info">
-
-      <div class="hero-box">
-        <small>OPEN</small>
-        <strong>12:00 — 20:30</strong>
-      </div>
-
-      <div class="hero-box">
-        <small>LOCATION</small>
-        <strong>指定席 4F</strong>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     TODAY
-========================= -->
-
-<section class="today">
-
-  <div class="today-card">
-
-    <div class="today-top">
-
-      <div class="today-status">
-        営業情報
-      </div>
-
-      <div class="today-race">
-        RACE DAY
-      </div>
-
-    </div>
-
-    <div class="today-main">
-
-      <div>
-        <small>営業時間</small>
-        <strong>12:00〜20:30</strong>
-      </div>
-
-      <div>
-        <small>定休日</small>
-        <strong>非開催日</strong>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     MENU
-========================= -->
-
-<section class="menu-section" id="menu">
-
-  <div class="section-head">
-
-    <div class="section-label">
-      PADDOCK MENU
-    </div>
-
-    <div class="section-title">
-      🥕 えさ場
-    </div>
-
-    <p class="section-copy">
-      レースのお供に、しっかり食べる。
-    </p>
-
-  </div>
-
-
-  <div class="menu-list">
-
-    <article class="menu-card">
-
-      <div class="menu-image">
-        🍗
-      </div>
-
-      <div class="menu-info">
-
-        <h3>
-          からあげ
-          <span class="recommend">
-            RECOMMEND
-          </span>
-        </h3>
-
-        <p>
-          馬ん軒おすすめの定番メニュー。
-        </p>
-
-        <div class="price">
-          ¥○○○
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article class="menu-card">
-
-      <div class="menu-image">
-        🍚
-      </div>
-
-      <div class="menu-info">
-
-        <h3>
-          定食
-        </h3>
-
-        <p>
-          レース観戦のお供にしっかりご飯。
-        </p>
-
-        <div class="price">
-          ¥○○○
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article class="menu-card">
-
-      <div class="menu-image">
-        🍜
-      </div>
-
-      <div class="menu-info">
-
-        <h3>
-          麺・軽食
-        </h3>
-
-        <p>
-          サッと食べたいときにも。
-        </p>
-
-        <div class="price">
-          ¥○○○〜
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article class="menu-card">
-
-      <div class="menu-image">
-        🍟
-      </div>
-
-      <div class="menu-info">
-
-        <h3>
-          おつまみ
-        </h3>
-
-        <p>
-          お酒と一緒にどうぞ。
-        </p>
-
-        <div class="price">
-          ¥○○○〜
-        </div>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     DRINK
-========================= -->
-
-<section class="drink" id="drink">
-
-  <div class="section-head">
-
-    <div class="section-label">
-      DRINK
-    </div>
-
-    <div class="section-title">
-      🍺 飲み物
-    </div>
-
-    <p class="section-copy">
-      レースを見ながら一杯。
-    </p>
-
-  </div>
-
-
-  <div class="drink-grid">
-
-    <div class="drink-card">
-      <div class="drink-icon">🍺</div>
-      <h3>ビール</h3>
-      <p>冷たい一杯をどうぞ。</p>
-      <div class="drink-price">¥○○○〜</div>
-    </div>
-
-    <div class="drink-card">
-      <div class="drink-icon">🥃</div>
-      <h3>お酒</h3>
-      <p>料理と一緒に。</p>
-      <div class="drink-price">¥○○○〜</div>
-    </div>
-
-    <div class="drink-card">
-      <div class="drink-icon">🥤</div>
-      <h3>ソフトドリンク</h3>
-      <p>お子様にも。</p>
-      <div class="drink-price">¥○○○〜</div>
-    </div>
-
-    <div class="drink-card">
-      <div class="drink-icon">☕</div>
-      <h3>その他</h3>
-      <p>各種取り揃えています。</p>
-      <div class="drink-price">¥○○○〜</div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PADDOCK
-========================= -->
-
-<section class="paddock" id="paddock">
-
-  <div class="section-head">
-
-    <div class="section-label">
-      PADDOCK
-    </div>
-
-    <div class="section-title">
-      🏇 馬ん軒について
-    </div>
-
-  </div>
-
-
-  <div class="paddock-card">
-
-    <h3>
-      レースの熱気と、うまい飯。
-    </h3>
-
-    <p>
-      馬ん軒は、高知競馬場4Fの指定席食堂。
-      レースを楽しみながら、食事やお酒をゆっくり楽しめます。
-    </p>
-
-    <p>
-      おすすめは、みんなで楽しめるからあげ。
-      レースの合間にもぜひどうぞ。
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     SCHEDULE
-========================= -->
-
-<section class="schedule" id="schedule">
-
-  <div class="section-head">
-
-    <div class="section-label">
-      RACE SCHEDULE
-    </div>
-
-    <div class="section-title">
-      🎫 営業日
-    </div>
-
-    <p class="section-copy">
-      高知競馬開催日に営業しています。
-    </p>
-
-  </div>
-
-
-  <div class="schedule-card">
-
-    <div class="schedule-row">
-      <div>
-        <span class="schedule-date">開催日</span>
-        <span class="schedule-day">RACE DAY</span>
-      </div>
-
-      <span class="open">
-        営業
+      <span class="hero-label">
+        RACECOURSE DINING
       </span>
-    </div>
 
+      <h1>馬ん軒</h1>
 
-    <div class="schedule-row">
-      <div>
-        <span class="schedule-date">非開催日</span>
-        <span class="schedule-day">OFF DAY</span>
+      <p class="hero-copy">
+        レースを眺めながら、うまい飯。
+      </p>
+
+      <div class="hero-info">
+
+        <div class="hero-box">
+          <small>OPEN</small>
+          <strong>12:00 — 20:30</strong>
+        </div>
+
+        <div class="hero-box">
+          <small>LOCATION</small>
+          <strong>指定席 4F</strong>
+        </div>
+
       </div>
 
-      <span class="closed">
-        休業
-      </span>
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     ACCESS
-========================= -->
+  <!-- TODAY -->
 
-<section class="access" id="access">
+  <section class="today" id="business">
 
-  <div class="section-head">
+    <div class="today-card">
 
-    <div class="section-label">
-      FINISH LINE
+      <div class="today-top">
+
+        <div class="today-status">
+          営業情報
+        </div>
+
+        <div class="today-race">
+          RACE DAY
+        </div>
+
+      </div>
+
+      <div class="today-main">
+
+        <div>
+          <small>営業時間</small>
+          <strong>12:00〜20:30</strong>
+        </div>
+
+        <div>
+          <small>定休日</small>
+          <strong>非開催日</strong>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="section-title">
-      🏁 場所
+  </section>
+
+
+  <!-- RECOMMEND FOOD -->
+
+  <section class="recommend-section">
+
+    <div class="section-head">
+
+      <div class="section-label">
+        RECOMMEND
+      </div>
+
+      <div class="section-title">
+        🍴 おすすめメニュー
+      </div>
+
+      <p class="section-copy">
+        馬ん軒でまず食べてほしい3品。
+      </p>
+
     </div>
 
-    <p class="section-copy">
-      馬ん軒はこちら。
-    </p>
 
-  </div>
+    <div class="recommend-list">
 
 
-  <div class="access-box">
+      <article class="recommend-card">
 
-    <div class="access-main">
-      高知競馬場 4F
+        <div class="food-image">🍗</div>
+
+        <div class="food-info">
+
+          <h3>
+            からあげ
+            <span class="badge">おすすめ</span>
+          </h3>
+
+          <p>
+            馬ん軒の定番。
+          </p>
+
+          <div class="food-price">
+            ¥○○○
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="recommend-card">
+
+        <div class="food-image">🍚</div>
+
+        <div class="food-info">
+
+          <h3>定食</h3>
+
+          <p>
+            しっかり食べたい方に。
+          </p>
+
+          <div class="food-price">
+            ¥○○○
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="recommend-card">
+
+        <div class="food-image">🍜</div>
+
+        <div class="food-info">
+
+          <h3>麺・軽食</h3>
+
+          <p>
+            レースの合間にも。
+          </p>
+
+          <div class="food-price">
+            ¥○○○〜
+          </div>
+
+        </div>
+
+      </article>
+
     </div>
 
-    <div class="access-detail">
-      指定席食堂「馬ん軒」<br>
-      レースを楽しみながらお食事いただけます。
-    </div>
 
-    <a
-      class="access-button"
-      href="https://www.google.com/maps/search/?api=1&query=高知競馬場"
-      target="_blank"
-    >
-      MAPを開く
+    <a href="#"
+       class="more-button"
+       onclick="showPage('menu');return false;">
+      メニューをすべて見る →
     </a>
 
-  </div>
+  </section>
 
-</section>
+
+  <!-- RECOMMEND DRINK -->
+
+  <section class="drink-section">
+
+    <div class="section-head">
+
+      <div class="section-label">
+        DRINK
+      </div>
+
+      <div class="section-title">
+        🍺 おすすめドリンク
+      </div>
+
+      <p class="section-copy">
+        レースを見ながら一杯。
+      </p>
+
+    </div>
+
+
+    <div class="drink-list">
+
+      <div class="drink-card">
+
+        <div class="drink-icon">🍺</div>
+
+        <div class="drink-info">
+          <h3>ビール</h3>
+          <p>レースのお供に。</p>
+        </div>
+
+        <div class="drink-price">
+          ¥○○○
+        </div>
+
+      </div>
+
+
+      <div class="drink-card">
+
+        <div class="drink-icon">🥃</div>
+
+        <div class="drink-info">
+          <h3>お酒</h3>
+          <p>料理と一緒に。</p>
+        </div>
+
+        <div class="drink-price">
+          ¥○○○〜
+        </div>
+
+      </div>
+
+
+      <div class="drink-card">
+
+        <div class="drink-icon">🥤</div>
+
+        <div class="drink-info">
+          <h3>ソフトドリンク</h3>
+          <p>各種あります。</p>
+        </div>
+
+        <div class="drink-price">
+          ¥○○○〜
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <a href="#"
+       class="more-button drink-more"
+       onclick="showPage('menu');return false;">
+      ドリンクをすべて見る →
+    </a>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about">
+
+    <div class="section-head">
+
+      <div class="section-label">
+        ABOUT
+      </div>
+
+      <div class="section-title">
+        🏇 馬ん軒
+      </div>
+
+    </div>
+
+
+    <div class="about-card">
+
+      <h3>
+        レースの熱気と、うまい飯。
+      </h3>
+
+      <p>
+        馬ん軒は、高知競馬場4Fの指定席食堂。
+        レースを楽しみながら、食事やお酒をゆっくり楽しめます。
+      </p>
+
+      <p>
+        レースの合間にも、ぜひお立ち寄りください。
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUSINESS DAY -->
+
+  <section class="schedule" id="schedule">
+
+    <div class="section-head">
+
+      <div class="section-label">
+        BUSINESS DAY
+      </div>
+
+      <div class="section-title">
+        📅 営業日
+      </div>
+
+      <p class="section-copy">
+        開催日に営業しています。
+      </p>
+
+    </div>
+
+
+    <div class="schedule-card">
+
+      <div class="schedule-row">
+
+        <div>
+          <span class="schedule-date">
+            開催日
+          </span>
+
+          <span class="schedule-day">
+            RACE DAY
+          </span>
+        </div>
+
+        <span class="open">
+          営業
+        </span>
+
+      </div>
+
+
+      <div class="schedule-row">
+
+        <div>
+          <span class="schedule-date">
+            非開催日
+          </span>
+
+          <span class="schedule-day">
+            OFF DAY
+          </span>
+        </div>
+
+        <span class="closed">
+          休業
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ACCESS -->
+
+  <section class="access" id="access">
+
+    <div class="section-head">
+
+      <div class="section-label">
+        ACCESS
+      </div>
+
+      <div class="section-title">
+        📍 場所
+      </div>
+
+      <p class="section-copy">
+        馬ん軒はこちら。
+      </p>
+
+    </div>
+
+
+    <div class="access-box">
+
+      <div class="access-main">
+        高知競馬場 4F
+      </div>
+
+      <div class="access-detail">
+        指定席食堂「馬ん軒」<br>
+        レースを楽しみながらお食事いただけます。
+      </div>
+
+      <a
+        class="access-button"
+        href="https://www.google.com/maps/search/?api=1&query=高知競馬場"
+        target="_blank">
+        MAPを開く
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    <div class="footer-logo">
+      馬ん軒
+    </div>
+
+    <p>
+      FOOD & DRINK
+    </p>
+
+    <p>
+      © 馬ん軒
+    </p>
+
+  </footer>
+
+</main>
+
 
 
 <!-- =========================
-     FOOTER
+     MENU PAGE
 ========================= -->
 
-<footer>
+<main id="menuPage" class="page">
 
-  <div class="footer-logo">
-    馬ん軒
+  <div class="page-title">
+
+    <small>
+      MENU LIST
+    </small>
+
+    <h1>
+      🍴 メニュー
+    </h1>
+
   </div>
 
-  <p>
-    FOOD & DRINK AT THE RACECOURSE
-  </p>
 
-  <p>
-    © 馬ん軒
-  </p>
+  <div class="menu-full">
 
-</footer>
+
+    <!-- FOOD -->
+
+    <div class="menu-category">
+
+      <div class="category-title">
+        食事
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          からあげ
+        </span>
+        <span class="full-menu-price">
+          ¥○○○
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          定食
+        </span>
+        <span class="full-menu-price">
+          ¥○○○
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          麺類
+        </span>
+        <span class="full-menu-price">
+          ¥○○○
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          丼・ご飯もの
+        </span>
+        <span class="full-menu-price">
+          ¥○○○
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          軽食
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- SIDE -->
+
+    <div class="menu-category">
+
+      <div class="category-title">
+        おつまみ
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          おつまみ各種
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          揚げ物
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- DRINK -->
+
+    <div class="menu-category">
+
+      <div class="category-title">
+        🍺 ドリンク
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          ビール
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          日本酒・焼酎
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          その他のお酒
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+
+      <div class="full-menu-item">
+        <span class="full-menu-name">
+          ソフトドリンク
+        </span>
+        <span class="full-menu-price">
+          ¥○○○〜
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <div class="footer-logo">
+      馬ん軒
+    </div>
+
+    <p>
+      FOOD & DRINK
+    </p>
+
+    <p>
+      © 馬ん軒
+    </p>
+
+  </footer>
+
+</main>
+
 
 
 <!-- =========================
@@ -1288,42 +1649,131 @@ footer p{
 
 <nav class="bottom-nav">
 
+  <!-- ① HOME -->
+
+  <a
+    href="#home"
+    class="nav-item active"
+    onclick="showPage('home');return false;">
+
+    <span class="nav-icon">
+      🏠
+    </span>
+
+    <span>
+      ホーム
+    </span>
+
+  </a>
+
+
+  <!-- ② MENU -->
+
   <a
     href="#menu"
-    class="nav-item active"
-  >
-    <span class="nav-icon">🥕</span>
-    <span>えさ場</span>
+    class="nav-item"
+    onclick="showPage('menu');return false;">
+
+    <span class="nav-icon">
+      🍴
+    </span>
+
+    <span>
+      メニュー
+    </span>
+
   </a>
 
+
+  <!-- ③ BUSINESS -->
 
   <a
-    href="#paddock"
+    href="#business"
     class="nav-item"
-  >
-    <span class="nav-icon">🏇</span>
-    <span>パドック</span>
+    onclick="showPage('home');setTimeout(function(){
+      document.getElementById('business').scrollIntoView();
+    },50);return false;">
+
+    <span class="nav-icon">
+      📅
+    </span>
+
+    <span>
+      営業日
+    </span>
+
   </a>
 
 
-  <a
-    href="#schedule"
-    class="nav-item"
-  >
-    <span class="nav-icon">🎫</span>
-    <span>指定席</span>
-  </a>
-
+  <!-- ④ ACCESS -->
 
   <a
     href="#access"
     class="nav-item"
-  >
-    <span class="nav-icon">🏁</span>
-    <span>ゴール</span>
+    onclick="showPage('home');setTimeout(function(){
+      document.getElementById('access').scrollIntoView();
+    },50);return false;">
+
+    <span class="nav-icon">
+      📍
+    </span>
+
+    <span>
+      場所
+    </span>
+
   </a>
 
 </nav>
+
+
+
+<script>
+
+function showPage(page){
+
+  const home = document.getElementById("homePage");
+  const menu = document.getElementById("menuPage");
+
+  if(page === "menu"){
+
+    home.classList.remove("active");
+    menu.classList.add("active");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+    setActiveNav(1);
+
+  }else{
+
+    menu.classList.remove("active");
+    home.classList.add("active");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+    setActiveNav(0);
+  }
+}
+
+
+function setActiveNav(index){
+
+  const navs = document.querySelectorAll(".nav-item");
+
+  navs.forEach(function(nav){
+    nav.classList.remove("active");
+  });
+
+  navs[index].classList.add("active");
+}
+
+</script>
 
 </body>
 </html>
