@@ -1,1 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>馬ん軒｜高知競馬場4F 指定席食堂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans JP",
+        "Yu Gothic",
+        sans-serif;
+    color: #222;
+    background: #f7f5f0;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(20, 20, 20, 0.94);
+    backdrop-filter: blur(8px);
+    color: white;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.logo span {
+    color: #d8a83e;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    font-size: 13px;
+}
+
+nav a {
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #d8a83e;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 68px 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.72)
+        ),
+        radial-gradient(
+            circle at 50% 35%,
+            #705b35 0%,
+            #28241d 42%,
+            #111 100%
+        );
+
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 競馬場っぽいライン */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 180%;
+    height: 1px;
+    background: rgba(255,255,255,0.13);
+    transform: rotate(-8deg);
+    top: 35%;
+    left: -40%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 180%;
+    height: 1px;
+    background: rgba(216,168,62,0.18);
+    transform: rotate(-8deg);
+    top: 55%;
+    left: -40%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.hero-sub {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: #d8a83e;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 15vw, 110px);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-shadow: 0 5px 25px rgba(0,0,0,0.5);
+}
+
+.hero h1 small {
+    display: block;
+    font-size: clamp(14px, 3vw, 20px);
+    letter-spacing: 0.3em;
+    margin-top: 20px;
+    color: #eee;
+}
+
+.hero-message {
+    margin-top: 35px;
+    font-size: clamp(18px, 4vw, 27px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.hero-info {
+    margin-top: 35px;
+    display: inline-flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info-badge {
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.08);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section {
+    padding: 90px 20px;
+}
+
+.section-inner {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title .en {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #b18a31;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    letter-spacing: 0.08em;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    background: white;
+}
+
+.intro-text {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.intro-highlight {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.intro-highlight span {
+    color: #b18a31;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+    background: #f7f5f0;
+}
+
+.menu-card {
+    max-width: 720px;
+    margin: auto;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+}
+
+.menu-photo {
+    height: 260px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.18),
+            rgba(0,0,0,0.4)
+        ),
+        linear-gradient(
+            135deg,
+            #b66b35,
+            #6c351f
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+.menu-photo::after {
+    content: "PHOTO";
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    opacity: 0.65;
+}
+
+.menu-content {
+    padding: 28px;
+}
+
+.menu-name {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.menu-name h3 {
+    font-size: 24px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.menu-description {
+    margin-top: 18px;
+    color: #666;
+}
+
+/* =========================
+   FEATURE
+========================= */
+
+.feature {
+    background: #191919;
+    color: white;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature-item {
+    padding: 35px 25px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.035);
+    text-align: center;
+}
+
+.feature-number {
+    color: #d8a83e;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.feature-item p {
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* =========================
+   INFORMATION
+========================= */
+
+.information {
+    background: white;
+}
+
+.info-table {
+    max-width: 760px;
+    margin: auto;
+    border-top: 1px solid #ddd;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 10px;
+}
+
+.info-label {
+    font-weight: 700;
+}
+
+.info-value {
+    color: #555;
+}
+
+/* =========================
+   ACCESS
+========================= */
+
+.access {
+    background: #f7f5f0;
+}
+
+.access-box {
+    max-width: 760px;
+    margin: auto;
+    background: white;
+    border-radius: 14px;
+    padding: 35px;
+}
+
+.access-map {
+    height: 230px;
+    background:
+        linear-gradient(
+            135deg,
+            #d9d5ca,
+            #aaa69a
+        );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.access-map span {
+    background: rgba(255,255,255,0.85);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+}
+
+.access-address {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: #d8a83e;
+}
+
+.footer-sub {
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 35px;
+}
+
+.copyright {
+    color: #666;
+    font-size: 11px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+        position: absolute;
+    }
+
+    .header-inner {
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        gap: 12px;
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    section {
+        padding: 70px 18px;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-row {
+        grid-template-columns: 110px 1fr;
+        font-size: 14px;
+    }
+
+    .access-box {
+        padding: 20px;
+    }
+
+    .menu-photo {
+        height: 210px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+            馬<span>ん</span>軒
+        </a>
+
+        <nav>
+            <a href="#menu">MENU</a>
+            <a href="#about">ABOUT</a>
+            <a href="#info">INFO</a>
+            <a href="#access">ACCESS</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-sub">
+            KOCHI RACECOURSE / 4F
+        </div>
+
+        <h1>
+            馬ん軒
+            <small>高知競馬場 4F 指定席食堂</small>
+        </h1>
+
+        <div class="hero-message">
+            レースを観ながら、うまい飯。
+        </div>
+
+        <div class="hero-info">
+
+            <div class="info-badge">
+                OPEN 12:00 - 20:30
+            </div>
+
+            <div class="info-badge">
+                高知競馬開催日のみ営業
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro" id="about">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+            <span class="en">ABOUT MAN-KEN</span>
+            <h2>馬ん軒について</h2>
+        </div>
+
+        <div class="intro-text">
+
+            <div class="intro-highlight">
+                競馬を楽しむ時間に、<span>おいしい一皿</span>を。
+            </div>
+
+            <p>
+                馬ん軒は、高知競馬場4F指定席にある食堂です。
+                <br>
+                レースの熱気を感じながら、
+                ゆっくり食事をお楽しみいただけます。
+            </p>
+
+            <br>
+
+            <p>
+                店内では食事だけでなく、
+                冷凍食品も取り扱っています。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+            <span class="en">RECOMMENDED MENU</span>
+            <h2>おすすめ</h2>
+        </div>
+
+        <div class="menu-card">
+
+            <div class="menu-photo">
+            </div>
+
+            <div class="menu-content">
+
+                <div class="menu-name">
+
+                    <h3>からあげ</h3>
+
+                    <div class="price">
+                        PRICE
+                    </div>
+
+                </div>
+
+                <p class="menu-description">
+                    馬ん軒おすすめの一品。
+                    <br>
+                    レース観戦のお供にぜひどうぞ。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURE -->
+
+<section class="feature">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+            <span class="en">THE EXPERIENCE</span>
+            <h2>馬ん軒で楽しむ</h2>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-item">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <h3>RACE</h3>
+
+                <p>
+                    競走馬たちの熱いレースを
+                    身近に感じながら楽しめます。
+                </p>
+
+            </div>
+
+
+            <div class="feature-item">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <h3>FOOD</h3>
+
+                <p>
+                    お食事を楽しみながら、
+                    競馬場での時間をゆっくりと。
+                </p>
+
+            </div>
+
+
+            <div class="feature-item">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <h3>FROZEN</h3>
+
+                <p>
+                    ご家庭でも楽しめる
+                    冷凍食品を取り扱っています。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section class="information" id="info">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+            <span class="en">INFORMATION</span>
+            <h2>店舗情報</h2>
+        </div>
+
+        <div class="info-table">
+
+            <div class="info-row">
+                <div class="info-label">店名</div>
+                <div class="info-value">馬ん軒</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">場所</div>
+                <div class="info-value">高知競馬場 4F 指定席</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">営業時間</div>
+                <div class="info-value">12:00 ～ 20:30</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">営業日</div>
+                <div class="info-value">高知競馬開催日</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">定休日</div>
+                <div class="info-value">高知競馬非開催日</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">取扱い</div>
+                <div class="info-value">食事・冷凍食品</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ACCESS -->
+
+<section class="access" id="access">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+            <span class="en">ACCESS</span>
+            <h2>アクセス</h2>
+        </div>
+
+        <div class="access-box">
+
+            <div class="access-map">
+                <span>高知競馬場</span>
+            </div>
+
+            <div class="access-address">
+                高知競馬場 4F 指定席
+            </div>
+
+            <p style="margin-top:10px;color:#666;">
+                馬ん軒は高知競馬場4F指定席にあります。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        馬<span>ん</span>軒
+    </div>
+
+    <div class="footer-sub">
+        高知競馬場 4F 指定席食堂
+    </div>
+
+    <div class="copyright">
+        © 馬ん軒 All Rights Reserved.
+    </div>
+
+</footer>
+
+
+</body>
+</html>
