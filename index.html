@@ -4,9 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>馬ん軒｜高知競馬場4F 指定席食堂</title>
+<meta name="theme-color" content="#07100b">
+<meta name="description" content="馬ん軒｜競馬を観ながら食事を楽しめる指定席食堂">
+
+<title>馬ん軒｜MAN-KEN DINING</title>
 
 <style>
+
+/* ==================================================
+   BASE
+================================================== */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -21,730 +29,1121 @@ body{
     font-family:
         -apple-system,
         BlinkMacSystemFont,
-        "Noto Sans JP",
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
         "Yu Gothic",
         sans-serif;
-    background:#f1eee6;
-    color:#20251f;
+
+    background:#07100b;
+    color:#f4f0df;
     line-height:1.7;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:fixed;
-    top:0;
-    left:0;
+img{
     width:100%;
-    z-index:1000;
-    background:#123d27;
-    border-bottom:3px solid #c59b3c;
-    color:white;
-}
-
-.header-inner{
-    max-width:1100px;
-    height:70px;
-    margin:auto;
-    padding:0 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:.12em;
-}
-
-.logo-sub{
     display:block;
-    font-size:8px;
-    letter-spacing:.25em;
-    color:#d9b65b;
-    margin-top:-5px;
 }
 
-nav{
-    display:flex;
-    gap:25px;
-    font-size:12px;
-    font-weight:bold;
-}
+/* ==================================================
+   OPENING
+================================================== */
 
-nav a{
-    opacity:.9;
-}
-
-nav a:hover{
-    color:#e0bd62;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:100vh;
-    padding:70px 20px 40px;
+#opening{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:#050806;
+    overflow:hidden;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    position:relative;
-    overflow:hidden;
+    animation:openingEnd 1s ease 4.8s forwards;
+}
 
-    color:white;
-    text-align:center;
+.opening-bg{
+    position:absolute;
+    inset:0;
 
     background:
-        linear-gradient(
-            rgba(8,28,18,.63),
-            rgba(8,20,13,.83)
-        ),
-        linear-gradient(
-            135deg,
-            #23613d,
-            #102d1d 48%,
-            #6b5430
+        radial-gradient(
+            ellipse at center,
+            rgba(170,135,55,.18),
+            rgba(5,8,6,1) 60%
         );
 }
 
-/* 競馬場のコースライン */
+/* 奥の光 */
+
+.opening-bg::after{
+    content:"";
+
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    width:8px;
+    height:100%;
+
+    transform:translate(-50%,-50%);
+
+    background:rgba(255,255,220,.8);
+    filter:blur(30px);
+
+    opacity:0;
+
+    animation:gateLight 1.5s ease 3.1s forwards;
+}
+
+/* 情報 */
+
+.opening-info{
+    position:absolute;
+    top:13%;
+    text-align:center;
+    z-index:5;
+}
+
+.ready{
+    font-size:12px;
+    letter-spacing:.45em;
+    color:#d7b85b;
+
+    opacity:0;
+
+    animation:readyShow .8s ease .4s forwards;
+}
+
+.opening-floor{
+    margin-top:8px;
+
+    font-size:10px;
+    letter-spacing:.25em;
+
+    color:rgba(255,255,255,.5);
+
+    opacity:0;
+
+    animation:readyShow .8s ease .8s forwards;
+}
+
+/* ゲート */
+
+.gate{
+    position:absolute;
+
+    width:min(430px,90vw);
+    height:280px;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:4;
+
+    perspective:800px;
+}
+
+.gate-left,
+.gate-right{
+    position:absolute;
+
+    top:0;
+
+    width:50%;
+    height:100%;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #777 0px,
+            #777 5px,
+            #272b28 5px,
+            #272b28 27px
+        );
+
+    border:2px solid #999;
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.8),
+        0 0 15px rgba(0,0,0,.7);
+}
+
+.gate-left{
+    left:0;
+
+    transform-origin:left center;
+
+    animation:
+        gateOpenLeft
+        1.25s
+        cubic-bezier(.65,0,.2,1)
+        2.8s
+        forwards;
+}
+
+.gate-right{
+    right:0;
+
+    transform-origin:right center;
+
+    animation:
+        gateOpenRight
+        1.25s
+        cubic-bezier(.65,0,.2,1)
+        2.8s
+        forwards;
+}
+
+.gate-left::after,
+.gate-right::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    width:8px;
+    height:100%;
+
+    background:#aaa;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.25);
+}
+
+.gate-left::after{
+    right:8px;
+}
+
+.gate-right::after{
+    left:8px;
+}
+
+.gate-bar{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    height:5px;
+
+    background:#b4b4b4;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.2);
+}
+
+.gate-bar:nth-child(1){top:20%;}
+.gate-bar:nth-child(2){top:40%;}
+.gate-bar:nth-child(3){top:60%;}
+.gate-bar:nth-child(4){top:80%;}
+
+.gate-light{
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:2px;
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:white;
+
+    opacity:0;
+
+    animation:centerFlash .8s ease 3.15s forwards;
+}
+
+/* ロゴ */
+
+.opening-center{
+    position:relative;
+
+    z-index:10;
+
+    text-align:center;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    animation:
+        logoAppear
+        1s
+        ease
+        3.35s
+        forwards;
+}
+
+.start-text{
+    font-size:11px;
+
+    letter-spacing:.5em;
+
+    color:#d7b85b;
+
+    margin-bottom:15px;
+}
+
+.opening-logo{
+    font-size:clamp(48px,14vw,82px);
+
+    font-weight:900;
+
+    letter-spacing:.12em;
+
+    color:#f5f1df;
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,.15),
+        0 0 35px rgba(215,184,91,.2);
+}
+
+.opening-en{
+    margin-top:10px;
+
+    font-size:10px;
+
+    letter-spacing:.45em;
+
+    color:rgba(255,255,255,.55);
+}
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    height:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    background:rgba(5,12,8,.9);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(215,184,91,.2);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:.12em;
+}
+
+.logo small{
+    display:block;
+
+    font-size:7px;
+
+    letter-spacing:.25em;
+
+    color:#d7b85b;
+
+    font-weight:500;
+}
+
+.header-menu{
+    font-size:11px;
+
+    letter-spacing:.15em;
+
+    color:#d7b85b;
+}
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero{
+    min-height:100svh;
+
+    padding:
+        110px
+        20px
+        115px;
+
+    position:relative;
+
+    display:flex;
+    align-items:flex-end;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3,9,5,.15),
+            rgba(3,9,5,.9)
+        ),
+        url("https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+}
 
 .hero::before{
     content:"";
-    position:absolute;
-    width:140%;
-    height:280px;
-    border:2px solid rgba(255,255,255,.14);
-    border-radius:50%;
-    transform:rotate(-12deg);
-    left:-20%;
-    top:30%;
-}
 
-.hero::after{
-    content:"";
     position:absolute;
-    width:150%;
-    height:1px;
-    background:rgba(255,255,255,.13);
-    transform:rotate(-12deg);
-    left:-20%;
-    top:61%;
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 48px,
+            rgba(255,255,255,.025) 49px
+        );
+
+    pointer-events:none;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
+
     width:100%;
-    max-width:900px;
 }
 
-.course-label{
-    display:inline-block;
-    padding:6px 15px;
-    border:1px solid #d1aa4e;
-    color:#e1bd63;
-    font-size:11px;
-    letter-spacing:.25em;
-    margin-bottom:25px;
+.hero-label{
+    font-size:10px;
+
+    letter-spacing:.4em;
+
+    color:#d7b85b;
+
+    margin-bottom:12px;
 }
 
 .hero h1{
-    font-size:clamp(65px,17vw,145px);
-    line-height:.9;
-    font-weight:900;
+    font-size:clamp(54px,17vw,92px);
+
+    line-height:1;
+
     letter-spacing:.08em;
-    text-shadow:0 8px 25px rgba(0,0,0,.45);
+
+    font-weight:900;
+
+    text-shadow:
+        0 4px 25px rgba(0,0,0,.7);
 }
 
-.hero h1 span{
-    color:#d6aa45;
-}
-
-.hero-en{
+.hero-sub{
     margin-top:18px;
-    font-size:13px;
-    letter-spacing:.35em;
-    color:#ddd;
+
+    font-size:15px;
+
+    color:#f0ecdd;
 }
 
-.catch{
-    margin-top:38px;
-    font-size:clamp(20px,4vw,32px);
+.hero-status{
+    margin-top:26px;
+
+    padding:14px 16px;
+
+    background:rgba(4,12,7,.8);
+
+    border-left:3px solid #d7b85b;
+
+    max-width:420px;
+}
+
+.status-top{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:11px;
+
+    letter-spacing:.12em;
+
+    color:#d7b85b;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#8bcf8b;
+
+    box-shadow:0 0 10px rgba(139,207,139,.8);
+}
+
+.status-time{
+    margin-top:3px;
+
+    font-size:19px;
+
     font-weight:800;
+
     letter-spacing:.08em;
 }
 
-.hero-info{
-    margin:35px auto 0;
+.hero-buttons{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
     gap:10px;
+
+    margin-top:18px;
 }
 
-.hero-badge{
-    padding:8px 16px;
-    background:rgba(0,0,0,.28);
-    border:1px solid rgba(255,255,255,.28);
-    font-size:12px;
-}
+.btn{
+    flex:1;
 
-/* =========================
-   RACE BOARD
-========================= */
+    padding:15px;
 
-.race-board{
-    background:#151914;
-    color:white;
-    padding:25px 20px;
-    border-top:5px solid #c49b3c;
-    border-bottom:5px solid #c49b3c;
-}
-
-.race-board-inner{
-    max-width:1000px;
-    margin:auto;
-}
-
-.race-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:15px;
-}
-
-.race-title h2{
-    font-size:20px;
-}
-
-.race-title span{
-    color:#d7ae4d;
-    font-size:10px;
-    letter-spacing:.2em;
-}
-
-.race-row{
-    display:grid;
-    grid-template-columns:70px 1fr 100px;
-    align-items:center;
-    gap:15px;
-    padding:13px 10px;
-    border-top:1px solid rgba(255,255,255,.12);
-}
-
-.race-number{
-    background:#d2a83f;
-    color:#171717;
-    font-weight:900;
     text-align:center;
-    padding:5px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.1em;
+
+    border:1px solid rgba(215,184,91,.7);
+
+    background:#d7b85b;
+
+    color:#111;
 }
 
-.race-name{
-    font-size:14px;
+.btn.sub{
+    background:rgba(0,0,0,.45);
+    color:#fff;
 }
 
-.race-status{
-    text-align:right;
+/* ==================================================
+   QUICK INFO
+================================================== */
+
+.quick{
+    padding:20px;
+
+    background:#f1ecdc;
+
+    color:#162017;
+}
+
+.quick-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    background:#c7c0ad;
+
+    border:1px solid #c7c0ad;
+}
+
+.quick-item{
+    min-height:110px;
+
+    padding:17px;
+
+    background:#f1ecdc;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.quick-label{
+    font-size:9px;
+
+    letter-spacing:.18em;
+
+    color:#776d59;
+}
+
+.quick-title{
+    font-size:17px;
+
+    font-weight:900;
+}
+
+.quick-detail{
     font-size:11px;
-    color:#aaa;
+
+    color:#665e50;
 }
 
-/* =========================
+/* ==================================================
    SECTION
-========================= */
+================================================== */
 
 section{
-    padding:85px 20px;
+    padding:75px 20px;
 }
 
-.section-inner{
-    max-width:1050px;
-    margin:auto;
-}
-
-.section-heading{
-    margin-bottom:45px;
-}
-
-.section-heading .en{
-    display:block;
-    color:#a47c25;
-    font-size:10px;
-    letter-spacing:.3em;
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-.section-heading h2{
-    font-size:34px;
-    letter-spacing:.08em;
-}
-
-.section-heading h2::after{
-    content:"";
-    display:block;
-    width:50px;
-    height:4px;
-    background:#c39a3c;
-    margin-top:12px;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-    background:#f1eee6;
-}
-
-.about-box{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:45px;
-    align-items:center;
-}
-
-.about-image{
-    height:350px;
-    border-radius:4px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #55794d,
-            #284b31 45%,
-            #7b603b
-        );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:rgba(255,255,255,.7);
-    font-size:11px;
-    letter-spacing:.3em;
-}
-
-.about-text h3{
-    font-size:27px;
-    margin-bottom:20px;
-}
-
-.about-text p{
-    color:#555;
-    margin-bottom:15px;
-}
-
-/* =========================
-   MENU
-========================= */
-
-.menu{
-    background:white;
-}
-
-.menu-note{
-    color:#666;
+.section-head{
     margin-bottom:30px;
 }
 
-.menu-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+.section-en{
+    font-size:9px;
+
+    letter-spacing:.35em;
+
+    color:#d7b85b;
+}
+
+.section-title{
+    margin-top:5px;
+
+    font-size:32px;
+
+    font-weight:900;
+}
+
+.section-lead{
+    margin-top:10px;
+
+    font-size:13px;
+
+    color:#aaa99f;
+}
+
+/* ==================================================
+   MENU
+================================================== */
+
+.menu-section{
+    background:#07100b;
 }
 
 .menu-card{
-    border:1px solid #ddd7c8;
-    background:#faf9f5;
-}
+    position:relative;
 
-.menu-photo{
-    height:220px;
+    padding:24px 20px;
+
+    margin-bottom:12px;
 
     background:
         linear-gradient(
             135deg,
-            #9b6338,
-            #5c321e
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.015)
         );
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:rgba(255,255,255,.65);
-    font-size:10px;
-    letter-spacing:.3em;
+    border:1px solid rgba(215,184,91,.2);
 }
 
-.menu-info{
-    padding:20px;
+.menu-card::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:3px;
+
+    background:#d7b85b;
 }
 
-.menu-info h3{
-    font-size:20px;
+.menu-category{
+    font-size:11px;
+
+    letter-spacing:.2em;
+
+    color:#d7b85b;
 }
 
-.menu-price{
-    color:#9b7427;
+.menu-name{
+    margin-top:7px;
+
+    font-size:22px;
+
     font-weight:900;
-    font-size:18px;
-    margin-top:5px;
 }
 
-/* =========================
+.menu-note{
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#aaa99f;
+}
+
+.menu-link{
+    display:block;
+
+    margin-top:25px;
+
+    padding:16px;
+
+    text-align:center;
+
+    border:1px solid rgba(215,184,91,.5);
+
+    color:#d7b85b;
+
+    font-size:12px;
+
+    letter-spacing:.15em;
+}
+
+/* ==================================================
+   DRINK
+================================================== */
+
+.drink{
+    background:#10150f;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.drink::after{
+    content:"DRINK";
+
+    position:absolute;
+
+    right:-25px;
+    top:30px;
+
+    font-size:80px;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.025);
+
+    letter-spacing:.05em;
+}
+
+.drink-box{
+    position:relative;
+
+    z-index:2;
+
+    padding:26px 20px;
+
+    border:1px solid rgba(215,184,91,.25);
+
+    background:rgba(0,0,0,.25);
+}
+
+.beer{
+    font-size:36px;
+
+    margin-bottom:8px;
+}
+
+.drink-box h3{
+    font-size:24px;
+}
+
+.drink-box p{
+    margin-top:8px;
+
+    font-size:13px;
+
+    color:#aaa99f;
+}
+
+/* ==================================================
    EXPERIENCE
-========================= */
+================================================== */
 
 .experience{
-    background:#123d27;
-    color:white;
-}
+    background:#e9e3d2;
 
-.experience .section-heading .en{
-    color:#d2aa4c;
-}
-
-.experience .section-heading h2::after{
-    background:#d2aa4c;
+    color:#1a211b;
 }
 
 .experience-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+
+    gap:10px;
 }
 
-.experience-card{
-    border:1px solid rgba(255,255,255,.18);
-    padding:30px 22px;
-    background:rgba(0,0,0,.13);
+.exp{
+    padding:24px 20px;
+
+    background:#f7f3e9;
+
+    border-left:4px solid #6b542d;
 }
 
-.experience-number{
-    font-size:11px;
-    color:#d2aa4c;
+.exp-number{
+    font-size:10px;
+
+    color:#8b754f;
+
     letter-spacing:.2em;
 }
 
-.experience-card h3{
-    font-size:22px;
-    margin:12px 0;
+.exp h3{
+    margin-top:4px;
+
+    font-size:20px;
 }
 
-.experience-card p{
-    color:#c9d0ca;
-    font-size:14px;
+.exp p{
+    margin-top:6px;
+
+    font-size:12px;
+
+    color:#68645b;
 }
 
-/* =========================
-   INFORMATION
-========================= */
-
-.information{
-    background:#f1eee6;
-}
-
-.info-table{
-    max-width:800px;
-    border-top:2px solid #253529;
-}
-
-.info-row{
-    display:grid;
-    grid-template-columns:180px 1fr;
-    padding:18px 10px;
-    border-bottom:1px solid #d1ccc0;
-}
-
-.info-label{
-    font-weight:900;
-}
-
-.info-value{
-    color:#555;
-}
-
-/* =========================
+/* ==================================================
    ACCESS
-========================= */
+================================================== */
 
 .access{
-    background:white;
+    background:#07100b;
 }
 
-.access-box{
-    max-width:800px;
-    margin:auto;
-}
-
-.map-placeholder{
-    height:280px;
+.access-card{
+    padding:25px 20px;
 
     background:
         linear-gradient(
-            135deg,
-            #d9d6cc,
-            #aaa79b
+            145deg,
+            rgba(215,184,91,.08),
+            rgba(255,255,255,.02)
         );
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    margin-bottom:25px;
+    border:1px solid rgba(215,184,91,.25);
 }
 
-.map-placeholder div{
-    background:white;
-    padding:12px 22px;
-    font-weight:bold;
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
+.access-label{
+    font-size:9px;
+
+    letter-spacing:.25em;
+
+    color:#d7b85b;
 }
 
-.access-info{
-    font-size:16px;
+.access-place{
+    margin-top:10px;
+
+    font-size:25px;
+
+    font-weight:900;
 }
 
-.access-info strong{
-    display:block;
-    font-size:20px;
-    margin-bottom:5px;
+.access-detail{
+    margin-top:5px;
+
+    font-size:14px;
+
+    color:#d0cec3;
 }
 
-/* =========================
+.access-note{
+    margin-top:20px;
+
+    padding-top:16px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    font-size:12px;
+
+    color:#aaa99f;
+}
+
+/* ==================================================
    FOOTER
-========================= */
+================================================== */
 
 footer{
-    background:#0d2417;
-    color:white;
+    padding:45px 20px 100px;
+
     text-align:center;
-    padding:55px 20px 30px;
-    border-top:4px solid #c49b3c;
+
+    background:#030704;
+
+    border-top:1px solid rgba(215,184,91,.15);
 }
 
 .footer-logo{
-    font-size:32px;
+    font-size:25px;
+
     font-weight:900;
+
     letter-spacing:.12em;
 }
 
-.footer-logo span{
-    color:#d2aa4c;
-}
-
-.footer-sub{
-    color:#aeb8b0;
-    font-size:11px;
-    letter-spacing:.15em;
+.footer-en{
     margin-top:5px;
+
+    font-size:8px;
+
+    letter-spacing:.35em;
+
+    color:#d7b85b;
 }
 
 .copyright{
-    margin-top:35px;
-    color:#68766d;
-    font-size:10px;
+    margin-top:25px;
+
+    font-size:9px;
+
+    color:#65685f;
 }
 
-/* =========================
+/* ==================================================
+   BOTTOM NAV
+================================================== */
+
+.bottom-nav{
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:2000;
+
+    height:65px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    background:rgba(4,10,6,.96);
+
+    backdrop-filter:blur(14px);
+
+    border-top:1px solid rgba(215,184,91,.2);
+}
+
+.bottom-nav a{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:3px;
+
+    font-size:8px;
+
+    letter-spacing:.08em;
+
+    color:#aaa99f;
+}
+
+.bottom-nav strong{
+    font-size:17px;
+
+    color:#d7b85b;
+
+    line-height:1;
+}
+
+/* ==================================================
+   ANIMATION
+================================================== */
+
+@keyframes readyShow{
+    from{
+        opacity:0;
+        transform:translateY(-8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes gateOpenLeft{
+    from{
+        transform:rotateY(0deg);
+    }
+
+    to{
+        transform:rotateY(-82deg);
+    }
+}
+
+@keyframes gateOpenRight{
+    from{
+        transform:rotateY(0deg);
+    }
+
+    to{
+        transform:rotateY(82deg);
+    }
+}
+
+@keyframes centerFlash{
+    0%{
+        opacity:0;
+    }
+
+    40%{
+        opacity:1;
+
+        box-shadow:
+            0 0 25px white,
+            0 0 70px rgba(255,240,180,.9);
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+@keyframes gateLight{
+    0%{
+        opacity:0;
+        width:5px;
+    }
+
+    40%{
+        opacity:.7;
+        width:150px;
+    }
+
+    100%{
+        opacity:0;
+        width:500px;
+    }
+}
+
+@keyframes logoAppear{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes openingEnd{
+    0%{
+        opacity:1;
+        visibility:visible;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+    }
+}
+
+/* ==================================================
    MOBILE
-========================= */
+================================================== */
 
-@media(max-width:700px){
+@media(max-width:600px){
 
-    .header-inner{
-        height:62px;
-    }
-
-    .logo{
-        font-size:20px;
-    }
-
-    nav{
-        gap:10px;
-        font-size:9px;
-    }
-
-    .hero{
-        min-height:92vh;
-    }
-
-    .hero h1{
-        font-size:76px;
-    }
-
-    .catch{
-        font-size:20px;
-    }
-
-    section{
-        padding:65px 18px;
-    }
-
-    .section-heading h2{
-        font-size:28px;
-    }
-
-    .about-box{
-        grid-template-columns:1fr;
-        gap:25px;
-    }
-
-    .about-image{
+    .gate{
+        width:88vw;
         height:230px;
     }
 
-    .menu-grid{
-        grid-template-columns:1fr;
+    .opening-logo{
+        font-size:52px;
     }
 
-    .experience-grid{
-        grid-template-columns:1fr;
-    }
-
-    .info-row{
-        grid-template-columns:105px 1fr;
-        font-size:14px;
-    }
-
-    .race-row{
-        grid-template-columns:55px 1fr 70px;
+    .hero{
+        padding-top:100px;
     }
 
 }
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER -->
+<!-- ==================================================
+     OPENING
+================================================== -->
 
-<header>
-    <div class="header-inner">
+<div id="opening">
 
-        <a href="#" class="logo">
-            馬<span>ん</span>軒
-            <span class="logo-sub">MAN-KEN</span>
-        </a>
+    <div class="opening-bg"></div>
 
-        <nav>
-            <a href="#menu">MENU</a>
-            <a href="#about">ABOUT</a>
-            <a href="#info">INFO</a>
-            <a href="#access">ACCESS</a>
-        </nav>
+    <div class="opening-info">
 
-    </div>
-</header>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="course-label">
-            KOCHI RACECOURSE / 4F
+        <div class="ready">
+            READY
         </div>
 
-        <h1>
-            馬<span>ん</span>軒
-        </h1>
+        <div class="opening-floor">
+            4F / SPECIFIED SEAT
+        </div>
 
-        <div class="hero-en">
+    </div>
+
+
+    <div class="gate">
+
+        <div class="gate-left">
+
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+
+        </div>
+
+
+        <div class="gate-right">
+
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+            <div class="gate-bar"></div>
+
+        </div>
+
+
+        <div class="gate-light"></div>
+
+    </div>
+
+
+    <div class="opening-center">
+
+        <div class="start-text">
+            START
+        </div>
+
+        <div class="opening-logo">
+            馬ん軒
+        </div>
+
+        <div class="opening-en">
             MAN-KEN DINING
-        </div>
-
-        <div class="catch">
-            レースを観ながら、うまい飯。
-        </div>
-
-        <div class="hero-info">
-
-            <div class="hero-badge">
-                高知競馬場 4F 指定席
-            </div>
-
-            <div class="hero-badge">
-                OPEN 12:00 - 20:30
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- RACE BOARD -->
-
-<div class="race-board">
-
-    <div class="race-board-inner">
-
-        <div class="race-title">
-            <h2>RACE & FOOD</h2>
-            <span>KOCHI RACECOURSE</span>
-        </div>
-
-        <div class="race-row">
-
-            <div class="race-number">4F</div>
-
-            <div class="race-name">
-                指定席フロア
-            </div>
-
-            <div class="race-status">
-                馬ん軒
-            </div>
-
-        </div>
-
-        <div class="race-row">
-
-            <div class="race-number">OPEN</div>
-
-            <div class="race-name">
-                高知競馬開催日
-            </div>
-
-            <div class="race-status">
-                12:00
-            </div>
-
-        </div>
-
-        <div class="race-row">
-
-            <div class="race-number">CLOSE</div>
-
-            <div class="race-name">
-                営業終了
-            </div>
-
-            <div class="race-status">
-                20:30
-            </div>
-
         </div>
 
     </div>
@@ -752,114 +1151,74 @@ footer{
 </div>
 
 
-<!-- ABOUT -->
+<!-- ==================================================
+     HEADER
+================================================== -->
 
-<section class="about" id="about">
+<header>
 
-    <div class="section-inner">
+    <a href="#home" class="logo">
+        馬ん軒
+        <small>MAN-KEN DINING</small>
+    </a>
 
-        <div class="section-heading">
+    <a href="#menu" class="header-menu">
+        MENU
+    </a>
 
-            <span class="en">ABOUT MAN-KEN</span>
+</header>
 
-            <h2>馬ん軒について</h2>
 
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            RACE × FOOD × DRINK
         </div>
 
+        <h1>
+            馬ん軒
+        </h1>
 
-        <div class="about-box">
-
-            <div class="about-image">
-                PHOTO
-            </div>
-
-            <div class="about-text">
-
-                <h3>
-                    競馬場で過ごす時間に、<br>
-                    うまい飯を。
-                </h3>
-
-                <p>
-                    馬ん軒は、高知競馬場4F指定席にある食堂です。
-                </p>
-
-                <p>
-                    レースを観戦しながら、
-                    お食事をお楽しみいただけます。
-                </p>
-
-                <p>
-                    冷凍食品を使用した料理を中心に、
-                    手軽に楽しめるメニューをご用意しています。
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MENU -->
-
-<section class="menu" id="menu">
-
-    <div class="section-inner">
-
-        <div class="section-heading">
-
-            <span class="en">MENU</span>
-
-            <h2>おすすめメニュー</h2>
-
-        </div>
-
-        <p class="menu-note">
-            レース観戦のお供に、ぜひどうぞ。
+        <p class="hero-sub">
+            競馬を観ながら、<br>
+            食事と一杯を。
         </p>
 
 
-        <div class="menu-grid">
+        <div class="hero-status">
 
-            <div class="menu-card">
+            <div class="status-top">
 
-                <div class="menu-photo">
-                    PHOTO
-                </div>
+                <span class="status-dot"></span>
 
-                <div class="menu-info">
-
-                    <h3>からあげ</h3>
-
-                    <div class="menu-price">
-                        PRICE
-                    </div>
-
-                </div>
+                OPENING INFORMATION
 
             </div>
 
-
-            <div class="menu-card">
-
-                <div class="menu-photo">
-                    PHOTO
-                </div>
-
-                <div class="menu-info">
-
-                    <h3>COMING SOON</h3>
-
-                    <div class="menu-price">
-                        MENU
-                    </div>
-
-                </div>
-
+            <div class="status-time">
+                12:00 — 20:30
             </div>
+
+        </div>
+
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="btn">
+                メニューを見る
+            </a>
+
+            <a href="#access" class="btn sub">
+                場所を見る
+            </a>
 
         </div>
 
@@ -868,69 +1227,263 @@ footer{
 </section>
 
 
-<!-- EXPERIENCE -->
+<!-- ==================================================
+     QUICK INFORMATION
+================================================== -->
+
+<div class="quick">
+
+    <div class="quick-grid">
+
+        <a href="#schedule" class="quick-item">
+
+            <div class="quick-label">
+                OPEN DAY
+            </div>
+
+            <div class="quick-title">
+                競馬開催日
+            </div>
+
+            <div class="quick-detail">
+                営業日を確認
+            </div>
+
+        </a>
+
+
+        <div class="quick-item">
+
+            <div class="quick-label">
+                HOURS
+            </div>
+
+            <div class="quick-title">
+                12:00 — 20:30
+            </div>
+
+            <div class="quick-detail">
+                営業時間
+            </div>
+
+        </div>
+
+
+        <a href="#menu" class="quick-item">
+
+            <div class="quick-label">
+                MENU
+            </div>
+
+            <div class="quick-title">
+                FOOD & DRINK
+            </div>
+
+            <div class="quick-detail">
+                メニューを見る
+            </div>
+
+        </a>
+
+
+        <a href="#access" class="quick-item">
+
+            <div class="quick-label">
+                LOCATION
+            </div>
+
+            <div class="quick-title">
+                4F
+            </div>
+
+            <div class="quick-detail">
+                指定席食堂
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MENU
+================================================== -->
+
+<section id="menu" class="menu-section">
+
+    <div class="section-head">
+
+        <div class="section-en">
+            MENU
+        </div>
+
+        <h2 class="section-title">
+            食べる。
+        </h2>
+
+        <p class="section-lead">
+            レース観戦と一緒に楽しめる料理をご用意しています。
+        </p>
+
+    </div>
+
+
+    <div class="menu-card">
+
+        <div class="menu-category">
+            FOOD
+        </div>
+
+        <div class="menu-name">
+            からあげ
+        </div>
+
+        <div class="menu-note">
+            馬ん軒おすすめ。
+        </div>
+
+    </div>
+
+
+    <div class="menu-card">
+
+        <div class="menu-category">
+            FOOD
+        </div>
+
+        <div class="menu-name">
+            お食事メニュー
+        </div>
+
+        <div class="menu-note">
+            詳しいメニューは店頭にてご確認ください。
+        </div>
+
+    </div>
+
+
+    <a href="#drink" class="menu-link">
+        DRINK MENU →
+    </a>
+
+</section>
+
+
+<!-- ==================================================
+     DRINK
+================================================== -->
+
+<section id="drink" class="drink">
+
+    <div class="section-head">
+
+        <div class="section-en">
+            DRINK
+        </div>
+
+        <h2 class="section-title">
+            一杯も。
+        </h2>
+
+        <p class="section-lead">
+            レースを観ながら、ゆっくり楽しむ。
+        </p>
+
+    </div>
+
+
+    <div class="drink-box">
+
+        <div class="beer">
+            🍺
+        </div>
+
+        <h3>
+            ビールあります。
+        </h3>
+
+        <p>
+            ビールをはじめ、アルコール類・ソフトドリンクなどをご用意しています。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     EXPERIENCE
+================================================== -->
 
 <section class="experience">
 
-    <div class="section-inner">
+    <div class="section-head">
 
-        <div class="section-heading">
+        <div class="section-en">
+            EXPERIENCE
+        </div>
 
-            <span class="en">RACECOURSE EXPERIENCE</span>
+        <h2 class="section-title">
+            馬ん軒で楽しむ。
+        </h2>
 
-            <h2>馬ん軒で楽しむ</h2>
+    </div>
+
+
+    <div class="experience-grid">
+
+        <div class="exp">
+
+            <div class="exp-number">
+                01 / WATCH
+            </div>
+
+            <h3>
+                レースを観る
+            </h3>
+
+            <p>
+                指定席でレースを楽しみながら、
+                食事の時間を。
+            </p>
 
         </div>
 
 
-        <div class="experience-grid">
+        <div class="exp">
 
-            <div class="experience-card">
-
-                <div class="experience-number">
-                    01 / WATCH
-                </div>
-
-                <h3>観る</h3>
-
-                <p>
-                    高知競馬場のレースを
-                    間近に感じながら楽しめます。
-                </p>
-
+            <div class="exp-number">
+                02 / EAT
             </div>
 
+            <h3>
+                食事を楽しむ
+            </h3>
 
-            <div class="experience-card">
+            <p>
+                レースの合間にも楽しめる
+                食事をご用意しています。
+            </p>
 
-                <div class="experience-number">
-                    02 / EAT
-                </div>
+        </div>
 
-                <h3>食べる</h3>
 
-                <p>
-                    レースの合間に、
-                    馬ん軒の料理をどうぞ。
-                </p>
+        <div class="exp">
 
+            <div class="exp-number">
+                03 / DRINK
             </div>
 
+            <h3>
+                一杯楽しむ
+            </h3>
 
-            <div class="experience-card">
-
-                <div class="experience-number">
-                    03 / ENJOY
-                </div>
-
-                <h3>楽しむ</h3>
-
-                <p>
-                    食事とともに、
-                    高知競馬場での一日を楽しんでください。
-                </p>
-
-            </div>
+            <p>
+                ビールやアルコールと一緒に
+                レースを楽しめます。
+            </p>
 
         </div>
 
@@ -939,100 +1492,45 @@ footer{
 </section>
 
 
-<!-- INFORMATION -->
+<!-- ==================================================
+     SCHEDULE
+================================================== -->
 
-<section class="information" id="info">
+<section id="schedule">
 
-    <div class="section-inner">
+    <div class="section-head">
 
-        <div class="section-heading">
-
-            <span class="en">INFORMATION</span>
-
-            <h2>店舗情報</h2>
-
+        <div class="section-en">
+            SCHEDULE
         </div>
 
+        <h2 class="section-title">
+            営業日
+        </h2>
 
-        <div class="info-table">
+        <p class="section-lead">
+            競馬開催日に営業しています。
+        </p>
 
-            <div class="info-row">
-
-                <div class="info-label">
-                    店名
-                </div>
-
-                <div class="info-value">
-                    馬ん軒
-                </div>
-
-            </div>
+    </div>
 
 
-            <div class="info-row">
+    <div class="access-card">
 
-                <div class="info-label">
-                    場所
-                </div>
+        <div class="access-label">
+            OPEN DAY
+        </div>
 
-                <div class="info-value">
-                    高知競馬場 4F 指定席
-                </div>
+        <div class="access-place">
+            競馬開催日
+        </div>
 
-            </div>
+        <div class="access-detail">
+            営業時間 12:00 — 20:30
+        </div>
 
-
-            <div class="info-row">
-
-                <div class="info-label">
-                    営業時間
-                </div>
-
-                <div class="info-value">
-                    12:00 ～ 20:30
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-label">
-                    営業日
-                </div>
-
-                <div class="info-value">
-                    高知競馬開催日
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-label">
-                    定休日
-                </div>
-
-                <div class="info-value">
-                    高知競馬非開催日
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-label">
-                    業態
-                </div>
-
-                <div class="info-value">
-                    指定席食堂
-                </div>
-
-            </div>
-
+        <div class="access-note">
+            ※営業日は開催スケジュールをご確認ください。
         </div>
 
     </div>
@@ -1040,66 +1538,98 @@ footer{
 </section>
 
 
-<!-- ACCESS -->
+<!-- ==================================================
+     ACCESS
+================================================== -->
 
-<section class="access" id="access">
+<section id="access" class="access">
 
-    <div class="section-inner">
+    <div class="section-head">
 
-        <div class="section-heading">
-
-            <span class="en">ACCESS</span>
-
-            <h2>アクセス</h2>
-
+        <div class="section-en">
+            ACCESS
         </div>
 
+        <h2 class="section-title">
+            場所
+        </h2>
 
-        <div class="access-box">
-
-            <div class="map-placeholder">
-
-                <div>
-                    高知競馬場
-                </div>
-
-            </div>
+    </div>
 
 
-            <div class="access-info">
+    <div class="access-card">
 
-                <strong>
-                    高知競馬場 4F 指定席
-                </strong>
+        <div class="access-label">
+            LOCATION
+        </div>
 
-                馬ん軒は高知競馬場4F指定席フロアにあります。
+        <div class="access-place">
+            高知競馬場 4F
+        </div>
 
-            </div>
+        <div class="access-detail">
+            指定席食堂
+        </div>
 
+        <div class="access-note">
+            レース観戦と一緒に、食事をお楽しみください。
         </div>
 
     </div>
 
 </section>
 
+</main>
 
-<!-- FOOTER -->
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
 
 <footer>
 
     <div class="footer-logo">
-        馬<span>ん</span>軒
+        馬ん軒
     </div>
 
-    <div class="footer-sub">
-        KOCHI RACECOURSE / 4F
+    <div class="footer-en">
+        MAN-KEN DINING
     </div>
 
     <div class="copyright">
-        © 馬ん軒 All Rights Reserved.
+        © 馬ん軒
     </div>
 
 </footer>
+
+
+<!-- ==================================================
+     BOTTOM NAV
+================================================== -->
+
+<nav class="bottom-nav">
+
+    <a href="#home">
+        <strong>⌂</strong>
+        HOME
+    </a>
+
+    <a href="#menu">
+        <strong>▤</strong>
+        MENU
+    </a>
+
+    <a href="#drink">
+        <strong>●</strong>
+        DRINK
+    </a>
+
+    <a href="#access">
+        <strong>⌖</strong>
+        ACCESS
+    </a>
+
+</nav>
 
 </body>
 </html>
