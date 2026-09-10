@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#f5f1e8">
-<title>馬ん軒</title>
+<meta name="theme-color" content="#eaf7fb">
+<title>馬ん軒｜高知競馬場4F 指定席食堂</title>
 
 <style>
 *{
@@ -24,19 +24,12 @@ body{
     BlinkMacSystemFont,
     "Noto Sans JP",
     "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
     sans-serif;
-  background:#f5f1e8;
-  color:#252820;
-  line-height:1.6;
-}
 
-button{
-  font-family:inherit;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
+  background:#eef8fb;
+  color:#18252d;
+  padding-bottom:78px;
 }
 
 /* =========================
@@ -47,123 +40,117 @@ a{
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#17251c;
-  overflow:hidden;
+
+  background:#111820;
+
   display:flex;
-  align-items:center;
   justify-content:center;
-  transition:opacity .6s ease, visibility .6s ease;
+  align-items:center;
+
+  transition:opacity .8s ease, visibility .8s ease;
 }
 
 #opening.hide{
   opacity:0;
   visibility:hidden;
-  pointer-events:none;
 }
 
-.opening-track{
-  position:absolute;
-  width:180vw;
-  height:100vh;
-  left:-35vw;
-  top:0;
-  transform:rotate(-7deg) scale(1.2);
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.025) 0px,
-      rgba(255,255,255,.025) 2px,
-      transparent 2px,
-      transparent 18px
-    ),
-    linear-gradient(
-      90deg,
-      #304c32 0%,
-      #3c603d 45%,
-      #496f47 100%
-    );
-}
+.result-board{
+  width:88%;
+  max-width:420px;
 
-.opening-track::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:18%;
-  width:100%;
-  height:8px;
-  background:#eee9dc;
-  box-shadow:
-    0 65vh 0 #eee9dc;
-}
-
-.opening-track::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:25%;
-  width:100%;
-  height:1px;
-  background:rgba(255,255,255,.4);
-  box-shadow:
-    0 51vh 0 rgba(255,255,255,.4);
-}
-
-.opening-stand{
-  position:absolute;
-  width:150%;
-  height:23%;
-  bottom:-3%;
-  left:-25%;
   background:
     linear-gradient(
-      to bottom,
-      transparent 0 18%,
-      rgba(18,25,20,.55) 18% 22%,
-      rgba(30,38,31,.95) 22% 100%
+      145deg,
+      #171e24,
+      #090d11
     );
-  clip-path:polygon(
-    0 40%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-  opacity:.7;
+
+  border:8px solid #303940;
+  border-radius:5px;
+
+  box-shadow:
+    0 0 0 2px #080b0d,
+    0 15px 40px rgba(0,0,0,.55);
+
+  padding:14px;
 }
 
-.opening-line{
-  position:absolute;
-  width:75%;
-  height:1px;
-  background:rgba(255,255,255,.55);
-  left:12%;
-  top:52%;
-  transform:scaleX(0);
-  animation:lineIn 1s .2s ease forwards;
+.board-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  color:#f2b84b;
+
+  font-size:13px;
+  font-weight:900;
+
+  letter-spacing:.15em;
+
+  padding:4px 4px 10px;
+
+  border-bottom:2px solid #454c50;
 }
 
-.opening-name{
-  position:relative;
-  z-index:2;
-  color:#fffdf6;
-  font-size:clamp(38px,11vw,68px);
-  font-weight:700;
-  letter-spacing:.16em;
+.board-title .confirmed{
   opacity:0;
-  transform:translateY(12px);
-  animation:nameIn .7s .65s ease forwards;
+  transition:opacity .4s;
 }
 
-@keyframes lineIn{
-  to{
-    transform:scaleX(1);
-  }
+.board-title .confirmed.show{
+  opacity:1;
 }
 
-@keyframes nameIn{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.result-row{
+  height:64px;
+
+  display:grid;
+  grid-template-columns:70px 1fr;
+
+  align-items:center;
+
+  border-bottom:1px solid #343c40;
+
+  opacity:0;
+  transform:translateY(8px);
+
+  transition:
+    opacity .5s ease,
+    transform .5s ease;
+}
+
+.result-row.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.rank{
+  color:#d8e0e2;
+  font-size:17px;
+  font-weight:900;
+}
+
+.name{
+  color:#ffbd50;
+
+  font-size:28px;
+  font-weight:900;
+
+  letter-spacing:.15em;
+
+  text-shadow:
+    0 0 5px rgba(255,189,80,.65);
+}
+
+.board-footer{
+  padding-top:12px;
+
+  text-align:right;
+
+  color:#6f797d;
+  font-size:10px;
+  letter-spacing:.12em;
 }
 
 
@@ -171,181 +158,142 @@ a{
    HEADER
 ========================= */
 
-.header{
+header{
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:100;
+
   height:58px;
-  background:rgba(255,253,247,.96);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #ddd7ca;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  background:rgba(255,255,255,.94);
+
+  border-bottom:1px solid #cfe7ee;
+
+  backdrop-filter:blur(12px);
 }
 
-.logo{
-  font-size:21px;
-  font-weight:800;
+.header-title{
+  font-size:18px;
+  font-weight:900;
   letter-spacing:.12em;
-  color:#263c2b;
+
+  color:#18323d;
 }
 
 
 /* =========================
-   HOME
+   HERO
 ========================= */
 
-.page{
-  min-height:100vh;
-}
-
 .hero{
-  position:relative;
-  height:270px;
-  overflow:hidden;
-  background:#35583a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+  height:230px;
 
-.hero-sky{
-  position:absolute;
-  inset:0;
+  position:relative;
+  overflow:hidden;
+
   background:
     linear-gradient(
-      to bottom,
-      rgba(236,239,226,.9) 0%,
-      rgba(207,220,198,.7) 34%,
-      rgba(76,112,70,.15) 54%,
-      rgba(36,69,40,.2) 100%
-    );
-}
-
-.hero-stand{
-  position:absolute;
-  left:-8%;
-  top:20%;
-  width:116%;
-  height:70px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(55,60,49,.8) 0 5px,
-      rgba(80,83,69,.8) 5px 9px
-    );
-  transform:perspective(300px) rotateX(15deg);
-  opacity:.8;
-}
-
-.hero-turf{
-  position:absolute;
-  bottom:-70px;
-  left:-15%;
-  width:130%;
-  height:190px;
-  border-radius:50%;
-  background:
-    repeating-linear-gradient(
-      105deg,
-      rgba(255,255,255,.025) 0 3px,
-      transparent 3px 10px
+      rgba(8,39,52,.32),
+      rgba(10,55,70,.18)
     ),
     linear-gradient(
       to bottom,
-      #557d4e,
-      #315a38
+      #78b9c8 0%,
+      #c7e8ee 55%,
+      #edf8fa 100%
     );
-  transform:rotate(-4deg);
-  box-shadow:
-    inset 0 15px 30px rgba(0,0,0,.12);
 }
 
-.hero-track{
-  position:absolute;
-  width:115%;
-  height:90px;
-  bottom:35px;
-  left:-8%;
-  border-top:5px solid rgba(244,239,221,.95);
-  border-bottom:2px solid rgba(244,239,221,.45);
-  border-radius:50%;
-  transform:rotate(-5deg);
-}
+/* 競馬場っぽい背景 */
 
-.hero-goal{
-  position:absolute;
-  right:12%;
-  bottom:76px;
-  width:4px;
-  height:72px;
-  background:#f2eee1;
-  opacity:.8;
-}
-
-.hero-goal::before{
+.hero::before{
   content:"";
+
   position:absolute;
-  top:0;
+  left:-10%;
+  right:-10%;
+  bottom:-40px;
+
+  height:125px;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.18) 0px,
+      rgba(255,255,255,.18) 2px,
+      transparent 2px,
+      transparent 13px
+    );
+
+  transform:skewY(-4deg);
+
+  opacity:.75;
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+  left:0;
   right:0;
-  width:42px;
-  height:23px;
-  border-top:3px solid #f2eee1;
-  border-bottom:3px solid #f2eee1;
+  bottom:38px;
+
+  height:4px;
+
+  background:rgba(255,255,255,.72);
+
+  box-shadow:
+    0 16px 0 rgba(255,255,255,.35),
+    0 32px 0 rgba(255,255,255,.22);
 }
 
 .hero-content{
   position:relative;
-  z-index:3;
+  z-index:2;
+
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
   text-align:center;
-  color:#fffdf7;
-  text-shadow:0 2px 12px rgba(0,0,0,.3);
+
+  color:white;
+
+  text-shadow:0 2px 8px rgba(0,0,0,.3);
 }
 
-.hero-content h1{
-  font-size:42px;
-  letter-spacing:.16em;
-  font-weight:800;
-}
-
-.hero-content p{
-  margin-top:6px;
-  font-size:12px;
+.hero-title{
+  font-size:38px;
+  font-weight:900;
   letter-spacing:.18em;
-  opacity:.9;
+}
+
+.hero-sub{
+  margin-top:8px;
+
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
 }
 
 
 /* =========================
-   CONTENT
+   MAIN
 ========================= */
 
-.container{
-  width:min(100% - 32px, 680px);
-  margin:auto;
-}
+main{
+  max-width:680px;
+  margin:0 auto;
 
-.section{
-  padding:30px 0;
-}
-
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:16px;
-}
-
-.section-title h2{
-  font-size:22px;
-  color:#263c2b;
-}
-
-.section-title span{
-  font-size:10px;
-  letter-spacing:.14em;
-  color:#8a8b7e;
+  padding:18px 14px 30px;
 }
 
 
@@ -353,60 +301,89 @@ a{
    BUSINESS INFO
 ========================= */
 
-.business-card{
-  background:#fffdf8;
-  border:1px solid #ded8ca;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 6px 20px rgba(40,45,35,.06);
-}
-
-.business-head{
-  padding:14px 18px;
-  background:#263c2b;
-  color:#fff;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-}
-
-.business-grid{
+.business-info{
   display:grid;
   grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-bottom:22px;
 }
 
-.business-box{
-  padding:20px 15px;
-  text-align:center;
+.info-box{
+  background:#fff;
+
+  border:1px solid #cce6ed;
+
+  border-radius:14px;
+
+  padding:15px 12px;
+
+  box-shadow:
+    0 3px 12px rgba(39,105,124,.07);
 }
 
-.business-box + .business-box{
-  border-left:1px solid #ded8ca;
-}
+.info-label{
+  color:#5e8997;
 
-.business-label{
   font-size:11px;
-  color:#85877b;
-  margin-bottom:8px;
-}
-
-.status{
-  font-size:19px;
   font-weight:800;
+
+  margin-bottom:7px;
 }
 
-.status.open{
-  color:#397348;
-}
-
-.status.closed{
-  color:#9a5b45;
-}
-
-.business-time{
+.info-main{
   font-size:20px;
+  font-weight:900;
+}
+
+.open-status{
+  color:#1188a5;
+}
+
+.closed-status{
+  color:#7d8990;
+}
+
+.info-sub{
+  margin-top:4px;
+
+  color:#6f7d83;
+
+  font-size:10px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  margin-top:30px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+
+  margin-bottom:13px;
+}
+
+.section-title{
+  font-size:21px;
+  font-weight:900;
+
+  color:#18323d;
+}
+
+.section-en{
+  color:#75aab8;
+
+  font-size:9px;
   font-weight:800;
-  color:#263c2b;
+
+  letter-spacing:.12em;
 }
 
 
@@ -414,95 +391,93 @@ a{
    MENU CARDS
 ========================= */
 
-.food-grid,
-.drink-grid{
+.menu-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
+
+  gap:9px;
 }
 
-.food-card,
-.drink-card{
-  background:#fffdf8;
-  border:1px solid #ded8ca;
-  border-radius:14px;
+.menu-card{
+  background:#fff;
+
+  border:1px solid #cce6ed;
+
+  border-radius:13px;
+
   overflow:hidden;
+
+  box-shadow:
+    0 3px 12px rgba(39,105,124,.07);
 }
 
-.food-image,
-.drink-image{
-  height:105px;
+.menu-photo{
+  height:95px;
+
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+
   background:
     linear-gradient(
-      135deg,
-      #e5dfd1,
-      #f6f1e6
+      145deg,
+      #e5f5f8,
+      #cfeaf0
     );
-  font-size:35px;
+
+  font-size:34px;
 }
 
-.food-card-body,
-.drink-card-body{
-  padding:11px;
+.menu-body{
+  padding:10px 9px 12px;
 }
 
-.food-card h3,
-.drink-card h3{
+.menu-name{
   font-size:13px;
+  font-weight:900;
+
+  line-height:1.35;
 }
 
-.price{
-  margin-top:3px;
+.menu-price{
+  margin-top:6px;
+
+  color:#1587a3;
+
   font-size:12px;
-  color:#73766c;
-}
-
-.more-button{
-  display:block;
-  margin-top:16px;
-  width:100%;
-  padding:13px;
-  border:1px solid #cfc8b9;
-  border-radius:12px;
-  background:#fffdf8;
-  color:#263c2b;
-  font-weight:700;
-  font-size:13px;
+  font-weight:900;
 }
 
 
 /* =========================
-   INFO
+   BUTTON
 ========================= */
 
-.info-box{
-  background:#fffdf8;
-  border:1px solid #ded8ca;
-  border-radius:16px;
-  padding:20px;
+.more-button{
+  width:100%;
+
+  margin-top:11px;
+
+  padding:13px;
+
+  border:1px solid #a9d5df;
+  border-radius:10px;
+
+  background:#fff;
+
+  color:#177e98;
+
+  font-size:12px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 3px 10px rgba(39,105,124,.05);
 }
 
-.info-row{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:12px 0;
-  border-bottom:1px solid #e8e2d6;
-}
-
-.info-row:last-child{
-  border-bottom:0;
-}
-
-.info-row strong{
-  color:#263c2b;
-}
-
-.info-row span{
-  text-align:right;
+.more-button:active{
+  transform:scale(.98);
 }
 
 
@@ -510,85 +485,122 @@ a{
    BUSINESS DAYS
 ========================= */
 
-.day-card{
-  background:#fffdf8;
-  border:1px solid #ded8ca;
-  border-radius:16px;
-  padding:20px;
+.business-days{
+  background:#fff;
+
+  border:1px solid #cce6ed;
+
+  border-radius:14px;
+
+  padding:17px;
+
+  box-shadow:
+    0 3px 12px rgba(39,105,124,.07);
 }
 
-.day-message{
-  font-size:15px;
-  font-weight:700;
-  color:#263c2b;
+.day-main{
+  color:#176f87;
+
+  font-size:17px;
+  font-weight:900;
 }
 
-.day-note{
+.day-sub{
   margin-top:7px;
+
+  color:#6d7d83;
+
   font-size:12px;
-  color:#77786f;
+
+  line-height:1.7;
 }
 
 
 /* =========================
-   ACCESS
+   LOCATION
 ========================= */
 
-.access-card{
-  background:#fffdf8;
-  border:1px solid #ded8ca;
-  border-radius:16px;
-  overflow:hidden;
+.location-box{
+  background:#fff;
+
+  border:1px solid #cce6ed;
+
+  border-radius:14px;
+
+  padding:17px;
+
+  box-shadow:
+    0 3px 12px rgba(39,105,124,.07);
+}
+
+.location-name{
+  font-size:17px;
+  font-weight:900;
+}
+
+.location-sub{
+  margin-top:5px;
+
+  color:#687980;
+
+  font-size:12px;
 }
 
 .fake-map{
-  height:180px;
+  height:160px;
+
+  margin-top:14px;
+
+  border-radius:11px;
+
   position:relative;
+  overflow:hidden;
+
   background:
-    linear-gradient(120deg, transparent 46%, #c7c4b8 47% 49%, transparent 50%),
-    linear-gradient(30deg, transparent 48%, #d2cec1 49% 51%, transparent 52%),
-    #e7e4d9;
+    linear-gradient(
+      35deg,
+      transparent 47%,
+      rgba(255,255,255,.8) 48%,
+      rgba(255,255,255,.8) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      125deg,
+      transparent 46%,
+      rgba(255,255,255,.8) 47%,
+      rgba(255,255,255,.8) 50%,
+      transparent 51%
+    ),
+    #d9edf1;
 }
 
-.fake-map::after{
-  content:"馬ん軒";
+.map-label{
   position:absolute;
+
   left:50%;
   top:50%;
+
   transform:translate(-50%,-50%);
-  background:#263c2b;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:700;
-}
 
-.access-text{
-  padding:18px;
-}
+  background:#fff;
 
-.access-text h3{
-  font-size:17px;
-  color:#263c2b;
-}
+  border:2px solid #63aabd;
 
-.access-text p{
-  margin-top:5px;
-  font-size:13px;
-  color:#66685f;
-}
+  border-radius:50%;
 
+  width:48px;
+  height:48px;
 
-/* =========================
-   FOOTER
-========================= */
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-.footer{
-  padding:35px 20px 100px;
-  text-align:center;
-  color:#85877d;
-  font-size:11px;
+  color:#177e98;
+
+  font-size:21px;
+  font-weight:900;
+
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
 
@@ -596,66 +608,62 @@ a{
    MENU PAGE
 ========================= */
 
-#menuPage{
+.page{
   display:none;
-  padding-bottom:90px;
 }
 
-.menu-page-head{
-  padding:30px 0 15px;
+.page.active{
+  display:block;
 }
 
-.menu-page-head h1{
-  font-size:27px;
-  color:#263c2b;
-}
+.full-menu{
+  background:#fff;
 
-.menu-page-head p{
-  margin-top:4px;
-  font-size:11px;
-  color:#85877d;
-  letter-spacing:.12em;
-}
+  border:1px solid #cce6ed;
 
-.menu-category{
-  margin-top:24px;
-}
-
-.menu-category h2{
-  font-size:17px;
-  padding-bottom:9px;
-  border-bottom:2px solid #263c2b;
-  color:#263c2b;
-}
-
-.menu-list{
-  margin-top:4px;
-  background:#fffdf8;
-  border:1px solid #ded8ca;
   border-radius:14px;
+
   overflow:hidden;
+
+  box-shadow:
+    0 3px 12px rgba(39,105,124,.07);
 }
 
-.menu-item{
+.menu-row{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:14px;
-  border-bottom:1px solid #e7e1d5;
+  align-items:center;
+
+  padding:16px 14px;
+
+  border-bottom:1px solid #e2f0f3;
 }
 
-.menu-item:last-child{
-  border-bottom:0;
+.menu-row:last-child{
+  border-bottom:none;
 }
 
-.menu-item-name{
+.menu-row-name{
   font-size:14px;
+  font-weight:800;
 }
 
-.menu-item-price{
+.menu-row-price{
+  color:#16829d;
+
   font-size:13px;
-  font-weight:700;
-  color:#55584f;
+  font-weight:900;
+}
+
+.category-title{
+  margin:26px 0 11px;
+
+  color:#19758b;
+
+  font-size:14px;
+  font-weight:900;
+
+  letter-spacing:.08em;
 }
 
 
@@ -665,38 +673,54 @@ a{
 
 .bottom-nav{
   position:fixed;
+
   left:0;
   right:0;
   bottom:0;
-  z-index:2000;
-  height:68px;
-  background:rgba(255,253,247,.97);
-  backdrop-filter:blur(12px);
-  border-top:1px solid #ddd7ca;
+
+  height:70px;
+
+  z-index:500;
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
+
+  background:rgba(255,255,255,.96);
+
+  border-top:1px solid #c9e3e9;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 -4px 18px rgba(32,94,110,.08);
 }
 
-.nav-btn{
-  border:0;
+.nav-button{
+  border:none;
   background:transparent;
-  color:#8a8b81;
+
+  color:#78939c;
+
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  gap:3px;
+  align-items:center;
+
+  gap:4px;
+
   font-size:10px;
+  font-weight:800;
+
+  cursor:pointer;
 }
 
 .nav-icon{
-  font-size:18px;
+  font-size:20px;
   line-height:1;
 }
 
-.nav-btn.active{
-  color:#263c2b;
-  font-weight:800;
+.nav-button.active{
+  color:#13819d;
 }
 
 
@@ -706,26 +730,21 @@ a{
 
 @media(max-width:380px){
 
-  .hero{
-    height:245px;
+  .hero-title{
+    font-size:33px;
   }
 
-  .hero-content h1{
-    font-size:35px;
+  .menu-photo{
+    height:82px;
   }
 
-  .food-grid,
-  .drink-grid{
-    gap:7px;
-  }
-
-  .food-image,
-  .drink-image{
-    height:90px;
+  .menu-name{
+    font-size:12px;
   }
 }
 </style>
 </head>
+
 
 <body>
 
@@ -734,10 +753,35 @@ a{
 ========================= -->
 
 <div id="opening">
-  <div class="opening-track"></div>
-  <div class="opening-stand"></div>
-  <div class="opening-line"></div>
-  <div class="opening-name">馬ん軒</div>
+
+  <div class="result-board">
+
+    <div class="board-title">
+      <span>着順</span>
+      <span class="confirmed" id="confirmed">確定</span>
+    </div>
+
+    <div class="result-row" id="row1">
+      <div class="rank">1着</div>
+      <div class="name">馬</div>
+    </div>
+
+    <div class="result-row" id="row2">
+      <div class="rank">2着</div>
+      <div class="name">ん</div>
+    </div>
+
+    <div class="result-row" id="row3">
+      <div class="rank">3着</div>
+      <div class="name">軒</div>
+    </div>
+
+    <div class="board-footer">
+      高知競馬場
+    </div>
+
+  </div>
+
 </div>
 
 
@@ -745,8 +789,10 @@ a{
      HEADER
 ========================= -->
 
-<header class="header">
-  <div class="logo">馬ん軒</div>
+<header>
+  <div class="header-title">
+    馬ん軒
+  </div>
 </header>
 
 
@@ -754,174 +800,287 @@ a{
      HOME
 ========================= -->
 
-<main id="homePage" class="page">
+<div id="homePage" class="page active">
 
   <section class="hero">
 
-    <div class="hero-sky"></div>
-    <div class="hero-stand"></div>
-    <div class="hero-turf"></div>
-    <div class="hero-track"></div>
-    <div class="hero-goal"></div>
-
     <div class="hero-content">
-      <h1>馬ん軒</h1>
+
+      <div class="hero-title">
+        馬ん軒
+      </div>
+
+      <div class="hero-sub">
+        高知競馬場 4F 指定席食堂
+      </div>
+
     </div>
 
   </section>
 
 
-  <div class="container">
+  <main>
 
-    <!-- 営業情報 -->
+    <!-- BUSINESS -->
 
-    <section class="section">
+    <div class="business-info">
 
-      <div class="section-title">
-        <h2>営業情報</h2>
-        <span>INFORMATION</span>
-      </div>
+      <div class="info-box">
 
-      <div class="business-card">
-
-        <div class="business-head">
-          本日の営業状況
+        <div class="info-label">
+          現在の営業状況
         </div>
 
-        <div class="business-grid">
+        <div
+          id="openStatus"
+          class="info-main open-status">
+          営業中
+        </div>
 
-          <div class="business-box">
-            <div class="business-label">
-              営業状況
-            </div>
-
-            <div id="statusText" class="status">
-              確認中
-            </div>
-          </div>
-
-          <div class="business-box">
-            <div class="business-label">
-              営業時間
-            </div>
-
-            <div class="business-time">
-              12:00〜20:30
-            </div>
-          </div>
-
+        <div class="info-sub">
+          高知競馬開催日
         </div>
 
       </div>
 
-    </section>
+
+      <div class="info-box">
+
+        <div class="info-label">
+          営業時間
+        </div>
+
+        <div class="info-main">
+          12:00〜20:30
+        </div>
+
+        <div class="info-sub">
+          開催日のみ営業
+        </div>
+
+      </div>
+
+    </div>
 
 
-    <!-- おすすめメニュー -->
+    <!-- FOOD -->
 
     <section class="section">
 
-      <div class="section-title">
-        <h2>おすすめ</h2>
-        <span>FOOD</span>
-      </div>
+      <div class="section-head">
 
-      <div class="food-grid">
+        <div class="section-title">
+          おすすめ
+        </div>
 
-        <article class="food-card">
-          <div class="food-image">🍗</div>
-          <div class="food-card-body">
-            <h3>からあげ</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
-
-        <article class="food-card">
-          <div class="food-image">🍴</div>
-          <div class="food-card-body">
-            <h3>おすすめ料理</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
-
-        <article class="food-card">
-          <div class="food-image">🍚</div>
-          <div class="food-card-body">
-            <h3>おすすめ料理</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
+        <div class="section-en">
+          FOOD
+        </div>
 
       </div>
 
-      <button class="more-button" onclick="showPage('menu')">
-        メニューをすべて見る →
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🍗
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              からあげ
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🍴
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              おすすめ料理
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🍚
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              ごはんもの
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="more-button"
+        onclick="showMenu()">
+
+        メニューをすべて見る　›
+
       </button>
 
     </section>
 
 
-    <!-- ドリンク -->
+    <!-- DRINK -->
 
     <section class="section">
 
-      <div class="section-title">
-        <h2>ドリンク</h2>
-        <span>DRINK</span>
-      </div>
+      <div class="section-head">
 
-      <div class="drink-grid">
+        <div class="section-title">
+          ドリンク
+        </div>
 
-        <article class="drink-card">
-          <div class="drink-image">🍺</div>
-          <div class="drink-card-body">
-            <h3>ビール</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
-
-        <article class="drink-card">
-          <div class="drink-image">🥤</div>
-          <div class="drink-card-body">
-            <h3>ソフトドリンク</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
-
-        <article class="drink-card">
-          <div class="drink-image">🍵</div>
-          <div class="drink-card-body">
-            <h3>お茶</h3>
-            <div class="price">¥○○○</div>
-          </div>
-        </article>
+        <div class="section-en">
+          DRINK
+        </div>
 
       </div>
 
-      <button class="more-button" onclick="showPage('menu')">
-        ドリンクをすべて見る →
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🍺
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              ビール
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🥤
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              ソフトドリンク
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="menu-photo">
+            🍵
+          </div>
+
+          <div class="menu-body">
+
+            <div class="menu-name">
+              お茶
+            </div>
+
+            <div class="menu-price">
+              ¥○○○
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="more-button"
+        onclick="showMenu()">
+
+        ドリンクをすべて見る　›
+
       </button>
 
     </section>
 
 
-    <!-- 営業日 -->
+    <!-- BUSINESS DAYS -->
 
-    <section id="business" class="section">
+    <section
+      id="businessDays"
+      class="section">
 
-      <div class="section-title">
-        <h2>営業日</h2>
-        <span>OPEN DAYS</span>
+      <div class="section-head">
+
+        <div class="section-title">
+          営業日
+        </div>
+
+        <div class="section-en">
+          BUSINESS DAYS
+        </div>
+
       </div>
 
-      <div class="day-card">
 
-        <div class="day-message">
+      <div class="business-days">
+
+        <div class="day-main">
           高知競馬開催日に営業
         </div>
 
-        <div class="day-note">
-          営業日については、当日の開催状況をご確認ください。
+        <div class="day-sub">
+          営業日は高知競馬の開催日に準じます。<br>
+          開催状況をご確認のうえご来店ください。
         </div>
 
       </div>
@@ -929,139 +1088,161 @@ a{
     </section>
 
 
-    <!-- 場所 -->
+    <!-- LOCATION -->
 
-    <section id="access" class="section">
+    <section
+      id="location"
+      class="section">
 
-      <div class="section-title">
-        <h2>場所</h2>
-        <span>ACCESS</span>
+      <div class="section-head">
+
+        <div class="section-title">
+          場所
+        </div>
+
+        <div class="section-en">
+          LOCATION
+        </div>
+
       </div>
 
-      <div class="access-card">
 
-        <div class="fake-map"></div>
+      <div class="location-box">
 
-        <div class="access-text">
-          <h3>高知競馬場 4F 指定席</h3>
-          <p>
-            競馬を楽しみながら、お食事・ドリンクをどうぞ。
-          </p>
+        <div class="location-name">
+          高知競馬場 4F 指定席
+        </div>
+
+        <div class="location-sub">
+          競馬を観ながら食事を楽しめる指定席食堂です。
+        </div>
+
+
+        <div class="fake-map">
+
+          <div class="map-label">
+            馬
+          </div>
+
         </div>
 
       </div>
 
     </section>
 
-  </div>
+  </main>
 
-
-  <footer class="footer">
-    馬ん軒
-  </footer>
-
-</main>
+</div>
 
 
 <!-- =========================
      MENU PAGE
 ========================= -->
 
-<main id="menuPage">
+<div id="menuPage" class="page">
 
-  <div class="container">
+  <main>
 
-    <div class="menu-page-head">
-      <h1>メニュー</h1>
-      <p>FOOD & DRINK</p>
-    </div>
+    <section class="section">
 
+      <div class="section-head">
 
-    <section class="menu-category">
-
-      <h2>料理</h2>
-
-      <div class="menu-list">
-
-        <div class="menu-item">
-          <span class="menu-item-name">からあげ</span>
-          <span class="menu-item-price">¥○○○</span>
+        <div class="section-title">
+          メニュー
         </div>
 
-        <div class="menu-item">
-          <span class="menu-item-name">おすすめ料理</span>
-          <span class="menu-item-price">¥○○○</span>
+        <div class="section-en">
+          MENU
         </div>
 
-        <div class="menu-item">
-          <span class="menu-item-name">おすすめ料理</span>
-          <span class="menu-item-price">¥○○○</span>
+      </div>
+
+
+      <div class="category-title">
+        FOOD
+      </div>
+
+      <div class="full-menu">
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            からあげ
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
         </div>
 
-        <div class="menu-item">
-          <span class="menu-item-name">その他料理</span>
-          <span class="menu-item-price">¥○○○</span>
+        <div class="menu-row">
+          <div class="menu-row-name">
+            おすすめ料理
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            ごはんもの
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            その他
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="category-title">
+        DRINK
+      </div>
+
+      <div class="full-menu">
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            ビール
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            ソフトドリンク
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
+        </div>
+
+        <div class="menu-row">
+          <div class="menu-row-name">
+            お茶
+          </div>
+          <div class="menu-row-price">
+            ¥○○○
+          </div>
         </div>
 
       </div>
 
     </section>
 
+  </main>
 
-    <section class="menu-category">
-
-      <h2>おつまみ</h2>
-
-      <div class="menu-list">
-
-        <div class="menu-item">
-          <span class="menu-item-name">おつまみ</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-        <div class="menu-item">
-          <span class="menu-item-name">おつまみ</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="menu-category">
-
-      <h2>ドリンク</h2>
-
-      <div class="menu-list">
-
-        <div class="menu-item">
-          <span class="menu-item-name">ビール</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-        <div class="menu-item">
-          <span class="menu-item-name">ソフトドリンク</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-        <div class="menu-item">
-          <span class="menu-item-name">お茶</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-        <div class="menu-item">
-          <span class="menu-item-name">その他ドリンク</span>
-          <span class="menu-item-price">¥○○○</span>
-        </div>
-
-      </div>
-
-    </section>
-
-  </div>
-
-</main>
+</div>
 
 
 <!-- =========================
@@ -1070,24 +1251,36 @@ a{
 
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" onclick="goHome()">
+  <button
+    id="navHome"
+    class="nav-button active"
+    onclick="goHome()">
+
     <span class="nav-icon">⌂</span>
     <span>ホーム</span>
+
   </button>
 
-  <button class="nav-btn" onclick="showPage('menu')">
-    <span class="nav-icon">♢</span>
+
+  <button
+    id="navMenu"
+    class="nav-button"
+    onclick="showMenu()">
+
+    <span class="nav-icon">◇</span>
     <span>メニュー</span>
+
   </button>
 
-  <button class="nav-btn" onclick="goToSection('business')">
+
+  <button
+    id="navDays"
+    class="nav-button"
+    onclick="goBusinessDays()">
+
     <span class="nav-icon">□</span>
     <span>営業日</span>
-  </button>
 
-  <button class="nav-btn" onclick="goToSection('access')">
-    <span class="nav-icon">⌖</span>
-    <span>場所</span>
   </button>
 
 </nav>
@@ -1096,57 +1289,63 @@ a{
 <script>
 
 /* =========================
-   OPENING
+   OPENING ANIMATION
 ========================= */
 
 window.addEventListener("load", function(){
 
   setTimeout(function(){
-    document.getElementById("opening").classList.add("hide");
+    document.getElementById("row1")
+      .classList.add("show");
+  }, 500);
+
+
+  setTimeout(function(){
+    document.getElementById("row2")
+      .classList.add("show");
+  }, 1100);
+
+
+  setTimeout(function(){
+    document.getElementById("row3")
+      .classList.add("show");
   }, 1700);
+
+
+  setTimeout(function(){
+    document.getElementById("confirmed")
+      .classList.add("show");
+  }, 2300);
+
+
+  setTimeout(function(){
+    document.getElementById("opening")
+      .classList.add("hide");
+  }, 3100);
 
 });
 
 
 /* =========================
-   PAGE SWITCH
+   PAGE CONTROL
 ========================= */
 
-function showPage(page){
+function showMenu(){
 
-  const home = document.getElementById("homePage");
-  const menu = document.getElementById("menuPage");
+  document.getElementById("homePage")
+    .classList.remove("active");
 
-  if(page === "menu"){
+  document.getElementById("menuPage")
+    .classList.add("active");
 
-    home.style.display = "none";
-    menu.style.display = "block";
+  document.getElementById("navHome")
+    .classList.remove("active");
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+  document.getElementById("navMenu")
+    .classList.add("active");
 
-    setActiveNav(1);
-
-  }else{
-
-    home.style.display = "block";
-    menu.style.display = "none";
-
-    setActiveNav(0);
-
-  }
-}
-
-
-/* =========================
-   HOME
-========================= */
-
-function goHome(){
-
-  showPage("home");
+  document.getElementById("navDays")
+    .classList.remove("active");
 
   window.scrollTo({
     top:0,
@@ -1155,104 +1354,90 @@ function goHome(){
 }
 
 
-/* =========================
-   SECTION JUMP
-========================= */
+function goHome(){
 
-function goToSection(id){
+  document.getElementById("menuPage")
+    .classList.remove("active");
 
-  showPage("home");
+  document.getElementById("homePage")
+    .classList.add("active");
+
+  document.getElementById("navMenu")
+    .classList.remove("active");
+
+  document.getElementById("navHome")
+    .classList.add("active");
+
+  document.getElementById("navDays")
+    .classList.remove("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+function goBusinessDays(){
+
+  goHome();
 
   setTimeout(function(){
 
-    const target = document.getElementById(id);
-
-    if(target){
-
-      const headerHeight = 58;
-
-      const position =
-        target.getBoundingClientRect().top
-        + window.pageYOffset
-        - headerHeight
-        - 10;
-
-      window.scrollTo({
-        top:position,
-        behavior:"smooth"
+    document.getElementById("businessDays")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
       });
 
-    }
+  },100);
 
-  },50);
+  document.getElementById("navHome")
+    .classList.remove("active");
 
-  if(id === "business"){
-    setActiveNav(2);
-  }
-
-  if(id === "access"){
-    setActiveNav(3);
-  }
-
+  document.getElementById("navDays")
+    .classList.add("active");
 }
 
 
 /* =========================
-   ACTIVE NAV
-========================= */
-
-function setActiveNav(index){
-
-  const buttons =
-    document.querySelectorAll(".nav-btn");
-
-  buttons.forEach(function(btn,i){
-
-    btn.classList.toggle(
-      "active",
-      i === index
-    );
-
-  });
-
-}
-
-
-/* =========================
-   BUSINESS STATUS
+   OPEN / CLOSED
 ========================= */
 
 function updateBusinessStatus(){
 
   const now = new Date();
 
-  const day = now.getDay();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
 
-  const minutes =
-    now.getHours() * 60
-    + now.getMinutes();
+  const current =
+    hour * 60 + minute;
 
-  const opening = 12 * 60;
-  const closing = 20 * 60 + 30;
+  const start =
+    12 * 60;
+
+  const end =
+    20 * 60 + 30;
 
   const status =
-    document.getElementById("statusText");
+    document.getElementById("openStatus");
 
-  /*
-    日曜日などの営業日判定は、
-    実際の開催日カレンダーを入れる段階で変更可能。
-    現在は時間のみで仮判定。
-  */
+  if(current >= start && current <= end){
 
-  if(minutes >= opening && minutes <= closing){
+    status.textContent =
+      "営業中";
 
-    status.textContent = "● 営業中";
-    status.className = "status open";
+    status.className =
+      "info-main open-status";
 
   }else{
 
-    status.textContent = "● 営業時間外";
-    status.className = "status closed";
+    status.textContent =
+      "営業時間外";
+
+    status.className =
+      "info-main closed-status";
 
   }
 
