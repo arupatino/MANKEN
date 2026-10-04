@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#173f2a">
-
 <title>馬ん軒｜開催日営業</title>
 
 <style>
@@ -19,19 +18,12 @@ html{
 }
 
 body{
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Noto Sans JP",
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    sans-serif;
-
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",
+  "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
   background:#eef1e8;
   color:#18251d;
   padding-bottom:78px;
 }
-
 
 /* =========================
    OPENING
@@ -41,41 +33,30 @@ body{
   position:fixed;
   inset:0;
   z-index:9999;
-
   background:#0d1711;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
-  transition:
-    opacity .8s ease,
-    visibility .8s ease;
+  opacity:1;
+  visibility:visible;
+  transition:opacity .8s ease,visibility .8s ease;
 }
 
 #opening.hide{
   opacity:0;
   visibility:hidden;
+  pointer-events:none;
 }
 
 .result-board{
   width:88%;
   max-width:420px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #1c2a21,
-      #080d0a
-    );
-
+  background:linear-gradient(145deg,#1c2a21,#080d0a);
   border:8px solid #3b443e;
   border-radius:5px;
-
   box-shadow:
     0 0 0 2px #080b09,
     0 15px 40px rgba(0,0,0,.55);
-
   padding:14px;
 }
 
@@ -83,16 +64,11 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   color:#d9ad4a;
-
   font-size:13px;
   font-weight:900;
-
   letter-spacing:.15em;
-
   padding:4px 4px 10px;
-
   border-bottom:2px solid #4a514b;
 }
 
@@ -107,17 +83,12 @@ body{
 
 .result-row{
   height:64px;
-
   display:grid;
   grid-template-columns:70px 1fr;
-
   align-items:center;
-
   border-bottom:1px solid #343c37;
-
   opacity:0;
   transform:translateY(8px);
-
   transition:
     opacity .5s ease,
     transform .5s ease;
@@ -130,23 +101,17 @@ body{
 
 .rank{
   color:#d8e0da;
-
   font-size:17px;
   font-weight:900;
 }
 
 .name{
   color:#e8bd59;
-
   font-size:28px;
   font-weight:900;
-
   letter-spacing:.15em;
-
-  text-shadow:
-    0 0 5px rgba(232,189,89,.55);
+  text-shadow:0 0 5px rgba(232,189,89,.55);
 }
-
 
 /* =========================
    HEADER
@@ -156,17 +121,12 @@ header{
   position:sticky;
   top:0;
   z-index:100;
-
   height:58px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:rgba(250,252,247,.95);
-
   border-bottom:1px solid #c9d7c8;
-
   backdrop-filter:blur(12px);
 }
 
@@ -174,10 +134,8 @@ header{
   font-size:18px;
   font-weight:900;
   letter-spacing:.12em;
-
   color:#173c29;
 }
-
 
 /* =========================
    HERO
@@ -185,10 +143,8 @@ header{
 
 .hero{
   height:250px;
-
   position:relative;
   overflow:hidden;
-
   background:
     linear-gradient(
       rgba(12,56,35,.12),
@@ -203,20 +159,13 @@ header{
     );
 }
 
-
-/* 芝 */
-
 .hero::before{
   content:"";
-
   position:absolute;
-
   left:-8%;
   right:-8%;
   bottom:-28px;
-
   height:135px;
-
   background:
     repeating-linear-gradient(
       0deg,
@@ -228,28 +177,18 @@ header{
       #74a85b,
       #426f38
     );
-
   transform:skewY(-4deg);
-
   opacity:.9;
 }
 
-
-/* コース柵・白線 */
-
 .hero::after{
   content:"";
-
   position:absolute;
-
   left:0;
   right:0;
   bottom:43px;
-
   height:5px;
-
   background:rgba(255,255,255,.82);
-
   box-shadow:
     0 17px 0 rgba(255,255,255,.38),
     0 34px 0 rgba(255,255,255,.22);
@@ -258,39 +197,28 @@ header{
 .hero-content{
   position:relative;
   z-index:2;
-
   height:100%;
-
   display:flex;
   flex-direction:column;
-
   justify-content:center;
   align-items:center;
-
   text-align:center;
-
   color:white;
-
-  text-shadow:
-    0 2px 9px rgba(0,0,0,.42);
+  text-shadow:0 2px 9px rgba(0,0,0,.42);
 }
 
 .hero-title{
   font-size:40px;
   font-weight:900;
-
   letter-spacing:.18em;
 }
 
 .hero-sub{
   margin-top:9px;
-
   font-size:12px;
   font-weight:800;
-
   letter-spacing:.12em;
 }
-
 
 /* =========================
    MAIN
@@ -298,46 +226,29 @@ header{
 
 main{
   max-width:680px;
-
   margin:0 auto;
-
   padding:18px 14px 30px;
 }
 
-
-/* =========================
-   BUSINESS INFO
-========================= */
-
 .business-info{
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:10px;
-
   margin-bottom:22px;
 }
 
 .info-box{
   background:#fff;
-
   border:1px solid #d1ddcc;
-
   border-radius:14px;
-
   padding:15px 12px;
-
-  box-shadow:
-    0 3px 12px rgba(40,75,45,.08);
+  box-shadow:0 3px 12px rgba(40,75,45,.08);
 }
 
 .info-label{
   color:#66806a;
-
   font-size:11px;
   font-weight:800;
-
   margin-bottom:7px;
 }
 
@@ -356,15 +267,12 @@ main{
 
 .info-sub{
   margin-top:4px;
-
   color:#718078;
-
   font-size:10px;
 }
 
-
 /* =========================
-   SECTION
+   SECTIONS
 ========================= */
 
 .section{
@@ -373,70 +281,52 @@ main{
 
 .section-head{
   display:flex;
-
   justify-content:space-between;
   align-items:end;
-
   margin-bottom:13px;
 }
 
 .section-title{
   font-size:21px;
   font-weight:900;
-
   color:#173c29;
 }
 
 .section-en{
   color:#7b967c;
-
   font-size:9px;
   font-weight:800;
-
   letter-spacing:.12em;
 }
 
-
 /* =========================
-   MENU CARDS
+   MENU
 ========================= */
 
 .menu-grid{
   display:grid;
-
   grid-template-columns:repeat(3,1fr);
-
   gap:9px;
 }
 
 .menu-card{
   background:#fff;
-
   border:1px solid #d1ddcc;
-
   border-radius:13px;
-
   overflow:hidden;
-
-  box-shadow:
-    0 3px 12px rgba(40,75,45,.08);
+  box-shadow:0 3px 12px rgba(40,75,45,.08);
 }
 
 .menu-photo{
   height:95px;
-
   display:flex;
-
   justify-content:center;
   align-items:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #eef2e8,
-      #d8e4d2
-    );
-
+  background:linear-gradient(
+    145deg,
+    #eef2e8,
+    #d8e4d2
+  );
   font-size:34px;
 }
 
@@ -447,52 +337,33 @@ main{
 .menu-name{
   font-size:13px;
   font-weight:900;
-
   line-height:1.35;
 }
 
 .menu-price{
   margin-top:6px;
-
   color:#9a6d21;
-
   font-size:12px;
   font-weight:900;
 }
 
-
-/* =========================
-   MORE BUTTON
-========================= */
-
 .more-button{
   width:100%;
-
   margin-top:11px;
-
   padding:13px;
-
   border:1px solid #b8cbb2;
-
   border-radius:10px;
-
   background:#fff;
-
   color:#31653c;
-
   font-size:12px;
   font-weight:900;
-
   cursor:pointer;
-
-  box-shadow:
-    0 3px 10px rgba(40,75,45,.05);
+  box-shadow:0 3px 10px rgba(40,75,45,.05);
 }
 
 .more-button:active{
   transform:scale(.98);
 }
-
 
 /* =========================
    BUSINESS DAYS
@@ -500,34 +371,24 @@ main{
 
 .business-days{
   background:#fff;
-
   border:1px solid #d1ddcc;
-
   border-radius:14px;
-
   padding:17px;
-
-  box-shadow:
-    0 3px 12px rgba(40,75,45,.08);
+  box-shadow:0 3px 12px rgba(40,75,45,.08);
 }
 
 .day-main{
   color:#28643a;
-
   font-size:17px;
   font-weight:900;
 }
 
 .day-sub{
   margin-top:7px;
-
   color:#6d7d71;
-
   font-size:12px;
-
   line-height:1.7;
 }
-
 
 /* =========================
    LOCATION
@@ -535,15 +396,10 @@ main{
 
 .location-box{
   background:#fff;
-
   border:1px solid #d1ddcc;
-
   border-radius:14px;
-
   padding:17px;
-
-  box-shadow:
-    0 3px 12px rgba(40,75,45,.08);
+  box-shadow:0 3px 12px rgba(40,75,45,.08);
 }
 
 .location-name{
@@ -553,52 +409,35 @@ main{
 
 .location-sub{
   margin-top:5px;
-
   color:#68776e;
-
   font-size:12px;
 }
 
 .google-map{
   width:100%;
-
   height:190px;
-
   margin-top:14px;
-
   border:0;
-
   border-radius:11px;
-
   display:block;
 }
 
 .map-link{
   display:block;
-
   text-align:center;
-
   margin-top:10px;
-
   padding:12px;
-
   border-radius:10px;
-
   background:#f1f5ed;
-
   border:1px solid #cbd9c5;
-
   color:#2d6539;
-
   text-decoration:none;
-
   font-size:12px;
   font-weight:900;
 }
 
-
 /* =========================
-   MENU PAGE
+   PAGE
 ========================= */
 
 .page{
@@ -609,27 +448,23 @@ main{
   display:block;
 }
 
+/* =========================
+   FULL MENU
+========================= */
+
 .full-menu{
   background:#fff;
-
   border:1px solid #d1ddcc;
-
   border-radius:14px;
-
   overflow:hidden;
-
-  box-shadow:
-    0 3px 12px rgba(40,75,45,.08);
+  box-shadow:0 3px 12px rgba(40,75,45,.08);
 }
 
 .menu-row{
   display:flex;
-
   justify-content:space-between;
   align-items:center;
-
   padding:16px 14px;
-
   border-bottom:1px solid #e3ebe0;
 }
 
@@ -644,22 +479,17 @@ main{
 
 .menu-row-price{
   color:#9a6d21;
-
   font-size:13px;
   font-weight:900;
 }
 
 .category-title{
   margin:26px 0 11px;
-
   color:#2d663b;
-
   font-size:14px;
   font-weight:900;
-
   letter-spacing:.08em;
 }
-
 
 /* =========================
    BOTTOM NAV
@@ -667,48 +497,30 @@ main{
 
 .bottom-nav{
   position:fixed;
-
   left:0;
   right:0;
   bottom:0;
-
   height:70px;
-
   z-index:500;
-
   display:grid;
-
   grid-template-columns:repeat(3,1fr);
-
   background:rgba(250,252,247,.97);
-
   border-top:1px solid #cad9c7;
-
   backdrop-filter:blur(12px);
-
-  box-shadow:
-    0 -4px 18px rgba(32,74,42,.10);
+  box-shadow:0 -4px 18px rgba(32,74,42,.10);
 }
 
 .nav-button{
   border:none;
-
   background:transparent;
-
   color:#78907c;
-
   display:flex;
-
   flex-direction:column;
-
   justify-content:center;
   align-items:center;
-
   gap:4px;
-
   font-size:10px;
   font-weight:800;
-
   cursor:pointer;
 }
 
@@ -721,9 +533,8 @@ main{
   color:#2d713d;
 }
 
-
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media(max-width:380px){
@@ -744,9 +555,7 @@ main{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================
      OPENING
@@ -757,98 +566,44 @@ main{
   <div class="result-board">
 
     <div class="board-title">
-
       <span>着順</span>
-
-      <span
-        class="confirmed"
-        id="confirmed">
-        確定
-      </span>
-
+      <span class="confirmed" id="confirmed">確定</span>
     </div>
 
-
-    <div
-      class="result-row"
-      id="row1">
-
-      <div class="rank">
-        1着
-      </div>
-
-      <div class="name">
-        馬
-      </div>
-
+    <div class="result-row" id="row1">
+      <div class="rank">1着</div>
+      <div class="name">馬</div>
     </div>
 
-
-    <div
-      class="result-row"
-      id="row2">
-
-      <div class="rank">
-        2着
-      </div>
-
-      <div class="name">
-        ん
-      </div>
-
+    <div class="result-row" id="row2">
+      <div class="rank">2着</div>
+      <div class="name">ん</div>
     </div>
 
-
-    <div
-      class="result-row"
-      id="row3">
-
-      <div class="rank">
-        3着
-      </div>
-
-      <div class="name">
-        軒
-      </div>
-
+    <div class="result-row" id="row3">
+      <div class="rank">3着</div>
+      <div class="name">軒</div>
     </div>
 
   </div>
 
 </div>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
-  <div class="header-title">
-    馬ん軒
-  </div>
-
+  <div class="header-title">馬ん軒</div>
 </header>
-
 
 <!-- =========================
      HOME
 ========================= -->
 
-<div
-  id="homePage"
-  class="page active">
-
-
-  <!-- HERO -->
+<div id="homePage" class="page active">
 
   <section class="hero">
 
     <div class="hero-content">
 
-      <div class="hero-title">
-        馬ん軒
-      </div>
+      <div class="hero-title">馬ん軒</div>
 
       <div class="hero-sub">
         競馬開催日に営業
@@ -858,14 +613,11 @@ main{
 
   </section>
 
-
   <main>
 
-
-    <!-- BUSINESS INFO -->
+    <!-- 営業状況 -->
 
     <div class="business-info">
-
 
       <div class="info-box">
 
@@ -873,24 +625,17 @@ main{
           現在の営業状況
         </div>
 
-        <div
-          id="openStatus"
-          class="info-main closed-status">
-
+        <div id="openStatus"
+             class="info-main closed-status">
           確認中
-
         </div>
 
-        <div
-          id="statusSub"
-          class="info-sub">
-
+        <div id="statusSub"
+             class="info-sub">
           開催日を確認しています
-
         </div>
 
       </div>
-
 
       <div class="info-box">
 
@@ -908,11 +653,10 @@ main{
 
       </div>
 
-
     </div>
 
 
-    <!-- FOOD -->
+    <!-- おすすめ -->
 
     <section class="section">
 
@@ -928,9 +672,7 @@ main{
 
       </div>
 
-
       <div class="menu-grid">
-
 
         <div class="menu-card">
 
@@ -994,23 +736,17 @@ main{
 
         </div>
 
-
       </div>
 
-
-      <button
-        class="more-button"
-        onclick="showMenu()">
-
+      <button class="more-button"
+              onclick="showMenu()">
         メニューをすべて見る　›
-
       </button>
-
 
     </section>
 
 
-    <!-- DRINK -->
+    <!-- ドリンク -->
 
     <section class="section">
 
@@ -1026,9 +762,7 @@ main{
 
       </div>
 
-
       <div class="menu-grid">
-
 
         <div class="menu-card">
 
@@ -1092,28 +826,20 @@ main{
 
         </div>
 
-
       </div>
 
-
-      <button
-        class="more-button"
-        onclick="showMenu()">
-
+      <button class="more-button"
+              onclick="showMenu()">
         ドリンクをすべて見る　›
-
       </button>
-
 
     </section>
 
 
-    <!-- BUSINESS DAYS -->
+    <!-- 営業日 -->
 
-    <section
-      id="businessDays"
-      class="section">
-
+    <section id="businessDays"
+             class="section">
 
       <div class="section-head">
 
@@ -1127,21 +853,15 @@ main{
 
       </div>
 
-
       <div class="business-days">
 
-        <div
-          class="day-main"
-          id="nextRaceDay">
-
+        <div class="day-main"
+             id="nextRaceDay">
           開催日を確認中
-
         </div>
 
-
-        <div
-          class="day-sub"
-          id="dayDescription">
+        <div class="day-sub"
+             id="dayDescription">
 
           開催日は公式日程をもとに判定します。<br>
           日程変更があった場合は、開催日データの更新が必要です。
@@ -1150,16 +870,13 @@ main{
 
       </div>
 
-
     </section>
 
 
-    <!-- LOCATION -->
+    <!-- 場所 -->
 
-    <section
-      id="location"
-      class="section">
-
+    <section id="location"
+             class="section">
 
       <div class="section-head">
 
@@ -1173,19 +890,15 @@ main{
 
       </div>
 
-
       <div class="location-box">
-
 
         <div class="location-name">
           高知県高知市長浜宮田2000
         </div>
 
-
         <div class="location-sub">
           馬ん軒の所在地
         </div>
-
 
         <iframe
           class="google-map"
@@ -1195,23 +908,17 @@ main{
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
 
-
         <a
           class="map-link"
           href="https://www.google.com/maps/search/?api=1&query=高知県高知市長浜宮田2000"
           target="_blank"
           rel="noopener">
-
           Googleマップで開く　›
-
         </a>
-
 
       </div>
 
-
     </section>
-
 
   </main>
 
@@ -1222,16 +929,12 @@ main{
      MENU PAGE
 ========================= -->
 
-<div
-  id="menuPage"
-  class="page">
-
+<div id="menuPage"
+     class="page">
 
   <main>
 
-
     <section class="section">
-
 
       <div class="section-head">
 
@@ -1250,61 +953,43 @@ main{
         FOOD
       </div>
 
-
       <div class="full-menu">
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             からあげ
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             おすすめ料理
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             ごはんもの
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             その他
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
-
 
       </div>
 
@@ -1313,51 +998,36 @@ main{
         DRINK
       </div>
 
-
       <div class="full-menu">
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             ビール
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             ソフトドリンク
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
         <div class="menu-row">
-
           <div class="menu-row-name">
             お茶
           </div>
-
           <div class="menu-row-price">
             ¥○○○
           </div>
-
         </div>
 
-
       </div>
-
 
     </section>
 
@@ -1372,19 +1042,13 @@ main{
 
 <nav class="bottom-nav">
 
-
   <button
     id="navHome"
     class="nav-button active"
     onclick="goHome()">
 
-    <span class="nav-icon">
-      ⌂
-    </span>
-
-    <span>
-      ホーム
-    </span>
+    <span class="nav-icon">⌂</span>
+    <span>ホーム</span>
 
   </button>
 
@@ -1394,13 +1058,8 @@ main{
     class="nav-button"
     onclick="showMenu()">
 
-    <span class="nav-icon">
-      ◇
-    </span>
-
-    <span>
-      メニュー
-    </span>
+    <span class="nav-icon">◇</span>
+    <span>メニュー</span>
 
   </button>
 
@@ -1410,69 +1069,133 @@ main{
     class="nav-button"
     onclick="goBusinessDays()">
 
-    <span class="nav-icon">
-      □
-    </span>
-
-    <span>
-      営業日
-    </span>
+    <span class="nav-icon">□</span>
+    <span>営業日</span>
 
   </button>
-
 
 </nav>
 
 
+<!-- ==================================================
+     OPENING SCRIPT
+     ※ 他の処理から完全に独立
+================================================== -->
+
 <script>
 
+(function(){
 
-/* =========================
-   OPENING ANIMATION
-========================= */
+  function startOpening(){
 
-window.addEventListener(
-  "load",
-  function(){
+    const opening =
+      document.getElementById("opening");
 
-    setTimeout(
-      () => document
-        .getElementById("row1")
-        .classList.add("show"),
-      500
-    );
+    const row1 =
+      document.getElementById("row1");
 
-    setTimeout(
-      () => document
-        .getElementById("row2")
-        .classList.add("show"),
-      1100
-    );
+    const row2 =
+      document.getElementById("row2");
 
-    setTimeout(
-      () => document
-        .getElementById("row3")
-        .classList.add("show"),
-      1700
-    );
+    const row3 =
+      document.getElementById("row3");
 
-    setTimeout(
-      () => document
-        .getElementById("confirmed")
-        .classList.add("show"),
-      2300
-    );
+    const confirmed =
+      document.getElementById("confirmed");
 
-    setTimeout(
-      () => document
-        .getElementById("opening")
-        .classList.add("hide"),
-      3100
-    );
+
+    if(!opening){
+      return;
+    }
+
+
+    /* 1着 */
+
+    setTimeout(function(){
+
+      if(row1){
+        row1.classList.add("show");
+      }
+
+    },500);
+
+
+    /* 2着 */
+
+    setTimeout(function(){
+
+      if(row2){
+        row2.classList.add("show");
+      }
+
+    },1100);
+
+
+    /* 3着 */
+
+    setTimeout(function(){
+
+      if(row3){
+        row3.classList.add("show");
+      }
+
+    },1700);
+
+
+    /* 確定 */
+
+    setTimeout(function(){
+
+      if(confirmed){
+        confirmed.classList.add("show");
+      }
+
+    },2300);
+
+
+    /* 通常終了 */
+
+    setTimeout(function(){
+
+      opening.classList.add("hide");
+
+    },3100);
+
+
+    /* 安全装置 */
+
+    setTimeout(function(){
+
+      opening.classList.add("hide");
+
+    },5000);
 
   }
-);
 
+
+  if(document.readyState === "loading"){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      startOpening
+    );
+
+  }else{
+
+    startOpening();
+
+  }
+
+})();
+
+</script>
+
+
+<!-- ==================================================
+     PAGE / BUSINESS SCRIPT
+================================================== -->
+
+<script>
 
 /* =========================
    PAGE CONTROL
@@ -1542,19 +1265,17 @@ function goBusinessDays(){
 
   goHome();
 
-  setTimeout(
-    function(){
+  setTimeout(function(){
 
-      document
-        .getElementById("businessDays")
-        .scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
+    document
+      .getElementById("businessDays")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
 
-    },
-    100
-  );
+  },100);
+
 
   document
     .getElementById("navHome")
@@ -1575,4 +1296,379 @@ const kochiRaceDays = [
 
   "2026-03-01",
   "2026-03-08",
-  "2026-03-14
+  "2026-03-14",
+  "2026-03-15",
+  "2026-03-17",
+  "2026-03-22",
+  "2026-03-23",
+  "2026-03-29",
+  "2026-03-30",
+
+  "2026-04-04",
+  "2026-04-05",
+  "2026-04-11",
+  "2026-04-12",
+  "2026-04-18",
+  "2026-04-19",
+  "2026-04-25",
+  "2026-04-26",
+  "2026-04-27",
+
+  "2026-05-02",
+  "2026-05-03",
+  "2026-05-09",
+  "2026-05-10",
+  "2026-05-16",
+  "2026-05-17",
+  "2026-05-23",
+  "2026-05-24",
+  "2026-05-30",
+  "2026-05-31",
+
+  "2026-06-03",
+  "2026-06-04",
+  "2026-06-05",
+  "2026-06-06",
+  "2026-06-07",
+  "2026-06-13",
+  "2026-06-14",
+  "2026-06-20",
+  "2026-06-21",
+  "2026-06-27",
+  "2026-06-28",
+
+  "2026-07-04",
+  "2026-07-05",
+  "2026-07-11",
+  "2026-07-12",
+  "2026-07-18",
+  "2026-07-19",
+  "2026-07-25",
+  "2026-07-26",
+
+  "2026-08-01",
+  "2026-08-02",
+
+  "2026-09-05",
+  "2026-09-06",
+  "2026-09-12",
+  "2026-09-13",
+  "2026-09-20",
+  "2026-09-22",
+  "2026-09-26",
+  "2026-09-27",
+
+  "2026-10-03",
+  "2026-10-04",
+
+  "2026-11-01",
+  "2026-11-08",
+  "2026-11-14",
+  "2026-11-15",
+  "2026-11-21",
+  "2026-11-22",
+  "2026-11-28",
+  "2026-11-29",
+
+  "2026-12-05",
+  "2026-12-06",
+  "2026-12-12",
+  "2026-12-13",
+  "2026-12-19",
+  "2026-12-20",
+  "2026-12-26",
+  "2026-12-27",
+  "2026-12-29",
+  "2026-12-31",
+
+  "2027-01-01",
+  "2027-01-02",
+  "2027-01-09",
+  "2027-01-10",
+  "2027-01-11",
+  "2027-01-12",
+  "2027-01-17",
+  "2027-01-19",
+  "2027-01-20",
+  "2027-01-24",
+  "2027-01-26",
+  "2027-01-27",
+
+  "2027-02-01",
+  "2027-02-02",
+  "2027-02-07",
+  "2027-02-09",
+  "2027-02-10",
+  "2027-02-14",
+  "2027-02-16",
+  "2027-02-17",
+  "2027-02-21",
+  "2027-02-23",
+  "2027-02-24",
+  "2027-02-28",
+
+  "2027-03-01",
+  "2027-03-02",
+  "2027-03-07",
+  "2027-03-09",
+  "2027-03-10",
+  "2027-03-14",
+  "2027-03-16",
+  "2027-03-17",
+  "2027-03-21",
+  "2027-03-23",
+  "2027-03-24",
+  "2027-03-27",
+  "2027-03-28",
+  "2027-03-29"
+
+];
+
+
+/* =========================
+   DATE FUNCTIONS
+========================= */
+
+function pad(n){
+
+  return String(n).padStart(2,"0");
+
+}
+
+
+function dateKey(d){
+
+  return (
+    d.getFullYear()
+    + "-"
+    + pad(d.getMonth()+1)
+    + "-"
+    + pad(d.getDate())
+  );
+
+}
+
+
+function formatDate(key){
+
+  const d =
+    new Date(key + "T00:00:00");
+
+  const week =
+    [
+      "日",
+      "月",
+      "火",
+      "水",
+      "木",
+      "金",
+      "土"
+    ][d.getDay()];
+
+  return (
+    (d.getMonth()+1)
+    + "月"
+    + d.getDate()
+    + "日（"
+    + week
+    + "）"
+  );
+
+}
+
+
+function getNextRaceDay(now){
+
+  const todayKey =
+    dateKey(now);
+
+  for(
+    let i=0;
+    i<kochiRaceDays.length;
+    i++
+  ){
+
+    if(
+      kochiRaceDays[i] >= todayKey
+    ){
+
+      return kochiRaceDays[i];
+
+    }
+
+  }
+
+  return null;
+
+}
+
+
+/* =========================
+   BUSINESS STATUS
+========================= */
+
+function updateBusinessStatus(){
+
+  const now =
+    new Date();
+
+  const key =
+    dateKey(now);
+
+  const isRaceDay =
+    kochiRaceDays.includes(key);
+
+  const current =
+    now.getHours()*60
+    + now.getMinutes();
+
+  const start =
+    12*60;
+
+  const end =
+    20*60+30;
+
+
+  const status =
+    document.getElementById(
+      "openStatus"
+    );
+
+  const sub =
+    document.getElementById(
+      "statusSub"
+    );
+
+
+  if(!status || !sub){
+
+    return;
+
+  }
+
+
+  /* 開催日ではない */
+
+  if(!isRaceDay){
+
+    status.textContent =
+      "本日休業";
+
+    status.className =
+      "info-main closed-status";
+
+    sub.textContent =
+      "本日は開催日ではありません";
+
+  }
+
+
+  /* 開催日・営業時間前 */
+
+  else if(current < start){
+
+    status.textContent =
+      "本日営業";
+
+    status.className =
+      "info-main open-status";
+
+    sub.textContent =
+      "12:00から営業";
+
+  }
+
+
+  /* 営業中 */
+
+  else if(current <= end){
+
+    status.textContent =
+      "営業中";
+
+    status.className =
+      "info-main open-status";
+
+    sub.textContent =
+      "開催日に営業";
+
+  }
+
+
+  /* 営業終了 */
+
+  else{
+
+    status.textContent =
+      "本日終了";
+
+    status.className =
+      "info-main closed-status";
+
+    sub.textContent =
+      "次回開催日に営業";
+
+  }
+
+
+  /* 次回営業日 */
+
+  const next =
+    getNextRaceDay(now);
+
+  const nextBox =
+    document.getElementById(
+      "nextRaceDay"
+    );
+
+
+  if(!nextBox){
+
+    return;
+
+  }
+
+
+  if(next){
+
+    if(
+      next === key &&
+      isRaceDay
+    ){
+
+      nextBox.textContent =
+        "本日は開催日です";
+
+    }else{
+
+      nextBox.textContent =
+        "次回営業日："
+        + formatDate(next);
+
+    }
+
+  }else{
+
+    nextBox.textContent =
+      "次回営業日は準備中";
+
+  }
+
+}
+
+
+/* =========================
+   START BUSINESS CHECK
+========================= */
+
+updateBusinessStatus();
+
+setInterval(
+  updateBusinessStatus,
+  60000
+);
+
+</script>
+
+</body>
+</html>
