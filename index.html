@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173f2a">
 
-<meta name="theme-color" content="#eaf7fb">
-<title>馬ん軒｜高知競馬場4F 指定席食堂</title>
+<title>馬ん軒｜開催日営業</title>
 
 <style>
 *{
@@ -27,10 +27,11 @@ body{
     "Yu Gothic",
     sans-serif;
 
-  background:#eef8fb;
-  color:#18252d;
+  background:#eef1e8;
+  color:#18251d;
   padding-bottom:78px;
 }
+
 
 /* =========================
    OPENING
@@ -41,13 +42,15 @@ body{
   inset:0;
   z-index:9999;
 
-  background:#111820;
+  background:#0d1711;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  transition:opacity .8s ease, visibility .8s ease;
+  transition:
+    opacity .8s ease,
+    visibility .8s ease;
 }
 
 #opening.hide{
@@ -62,15 +65,15 @@ body{
   background:
     linear-gradient(
       145deg,
-      #171e24,
-      #090d11
+      #1c2a21,
+      #080d0a
     );
 
-  border:8px solid #303940;
+  border:8px solid #3b443e;
   border-radius:5px;
 
   box-shadow:
-    0 0 0 2px #080b0d,
+    0 0 0 2px #080b09,
     0 15px 40px rgba(0,0,0,.55);
 
   padding:14px;
@@ -81,7 +84,7 @@ body{
   justify-content:space-between;
   align-items:center;
 
-  color:#f2b84b;
+  color:#d9ad4a;
 
   font-size:13px;
   font-weight:900;
@@ -90,7 +93,7 @@ body{
 
   padding:4px 4px 10px;
 
-  border-bottom:2px solid #454c50;
+  border-bottom:2px solid #4a514b;
 }
 
 .board-title .confirmed{
@@ -110,7 +113,7 @@ body{
 
   align-items:center;
 
-  border-bottom:1px solid #343c40;
+  border-bottom:1px solid #343c37;
 
   opacity:0;
   transform:translateY(8px);
@@ -126,13 +129,14 @@ body{
 }
 
 .rank{
-  color:#d8e0e2;
+  color:#d8e0da;
+
   font-size:17px;
   font-weight:900;
 }
 
 .name{
-  color:#ffbd50;
+  color:#e8bd59;
 
   font-size:28px;
   font-weight:900;
@@ -140,17 +144,7 @@ body{
   letter-spacing:.15em;
 
   text-shadow:
-    0 0 5px rgba(255,189,80,.65);
-}
-
-.board-footer{
-  padding-top:12px;
-
-  text-align:right;
-
-  color:#6f797d;
-  font-size:10px;
-  letter-spacing:.12em;
+    0 0 5px rgba(232,189,89,.55);
 }
 
 
@@ -169,9 +163,9 @@ header{
   align-items:center;
   justify-content:center;
 
-  background:rgba(255,255,255,.94);
+  background:rgba(250,252,247,.95);
 
-  border-bottom:1px solid #cfe7ee;
+  border-bottom:1px solid #c9d7c8;
 
   backdrop-filter:blur(12px);
 }
@@ -181,7 +175,7 @@ header{
   font-weight:900;
   letter-spacing:.12em;
 
-  color:#18323d;
+  color:#173c29;
 }
 
 
@@ -190,65 +184,75 @@ header{
 ========================= */
 
 .hero{
-  height:230px;
+  height:250px;
 
   position:relative;
   overflow:hidden;
 
   background:
     linear-gradient(
-      rgba(8,39,52,.32),
-      rgba(10,55,70,.18)
+      rgba(12,56,35,.12),
+      rgba(9,58,32,.25)
     ),
     linear-gradient(
       to bottom,
-      #78b9c8 0%,
-      #c7e8ee 55%,
-      #edf8fa 100%
+      #9fd0dc 0%,
+      #d8e9df 45%,
+      #6f9d55 46%,
+      #3e6d37 100%
     );
 }
 
-/* 競馬場っぽい背景 */
+
+/* 芝 */
 
 .hero::before{
   content:"";
 
   position:absolute;
-  left:-10%;
-  right:-10%;
-  bottom:-40px;
 
-  height:125px;
+  left:-8%;
+  right:-8%;
+  bottom:-28px;
+
+  height:135px;
 
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.18) 0px,
-      rgba(255,255,255,.18) 2px,
-      transparent 2px,
-      transparent 13px
+      rgba(255,255,255,.10) 0 2px,
+      transparent 2px 13px
+    ),
+    linear-gradient(
+      180deg,
+      #74a85b,
+      #426f38
     );
 
   transform:skewY(-4deg);
 
-  opacity:.75;
+  opacity:.9;
 }
+
+
+/* コース柵・白線 */
 
 .hero::after{
   content:"";
 
   position:absolute;
+
   left:0;
   right:0;
-  bottom:38px;
+  bottom:43px;
 
-  height:4px;
+  height:5px;
 
-  background:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.82);
 
   box-shadow:
-    0 16px 0 rgba(255,255,255,.35),
-    0 32px 0 rgba(255,255,255,.22);
+    0 17px 0 rgba(255,255,255,.38),
+    0 34px 0 rgba(255,255,255,.22);
 }
 
 .hero-content{
@@ -267,20 +271,23 @@ header{
 
   color:white;
 
-  text-shadow:0 2px 8px rgba(0,0,0,.3);
+  text-shadow:
+    0 2px 9px rgba(0,0,0,.42);
 }
 
 .hero-title{
-  font-size:38px;
+  font-size:40px;
   font-weight:900;
+
   letter-spacing:.18em;
 }
 
 .hero-sub{
-  margin-top:8px;
+  margin-top:9px;
 
   font-size:12px;
-  font-weight:700;
+  font-weight:800;
+
   letter-spacing:.12em;
 }
 
@@ -291,6 +298,7 @@ header{
 
 main{
   max-width:680px;
+
   margin:0 auto;
 
   padding:18px 14px 30px;
@@ -303,6 +311,7 @@ main{
 
 .business-info{
   display:grid;
+
   grid-template-columns:1fr 1fr;
 
   gap:10px;
@@ -313,18 +322,18 @@ main{
 .info-box{
   background:#fff;
 
-  border:1px solid #cce6ed;
+  border:1px solid #d1ddcc;
 
   border-radius:14px;
 
   padding:15px 12px;
 
   box-shadow:
-    0 3px 12px rgba(39,105,124,.07);
+    0 3px 12px rgba(40,75,45,.08);
 }
 
 .info-label{
-  color:#5e8997;
+  color:#66806a;
 
   font-size:11px;
   font-weight:800;
@@ -338,17 +347,17 @@ main{
 }
 
 .open-status{
-  color:#1188a5;
+  color:#267a3b;
 }
 
 .closed-status{
-  color:#7d8990;
+  color:#778078;
 }
 
 .info-sub{
   margin-top:4px;
 
-  color:#6f7d83;
+  color:#718078;
 
   font-size:10px;
 }
@@ -364,6 +373,7 @@ main{
 
 .section-head{
   display:flex;
+
   justify-content:space-between;
   align-items:end;
 
@@ -374,11 +384,11 @@ main{
   font-size:21px;
   font-weight:900;
 
-  color:#18323d;
+  color:#173c29;
 }
 
 .section-en{
-  color:#75aab8;
+  color:#7b967c;
 
   font-size:9px;
   font-weight:800;
@@ -393,6 +403,7 @@ main{
 
 .menu-grid{
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
 
   gap:9px;
@@ -401,28 +412,29 @@ main{
 .menu-card{
   background:#fff;
 
-  border:1px solid #cce6ed;
+  border:1px solid #d1ddcc;
 
   border-radius:13px;
 
   overflow:hidden;
 
   box-shadow:
-    0 3px 12px rgba(39,105,124,.07);
+    0 3px 12px rgba(40,75,45,.08);
 }
 
 .menu-photo{
   height:95px;
 
   display:flex;
+
   justify-content:center;
   align-items:center;
 
   background:
     linear-gradient(
       145deg,
-      #e5f5f8,
-      #cfeaf0
+      #eef2e8,
+      #d8e4d2
     );
 
   font-size:34px;
@@ -442,7 +454,7 @@ main{
 .menu-price{
   margin-top:6px;
 
-  color:#1587a3;
+  color:#9a6d21;
 
   font-size:12px;
   font-weight:900;
@@ -450,7 +462,7 @@ main{
 
 
 /* =========================
-   BUTTON
+   MORE BUTTON
 ========================= */
 
 .more-button{
@@ -460,12 +472,13 @@ main{
 
   padding:13px;
 
-  border:1px solid #a9d5df;
+  border:1px solid #b8cbb2;
+
   border-radius:10px;
 
   background:#fff;
 
-  color:#177e98;
+  color:#31653c;
 
   font-size:12px;
   font-weight:900;
@@ -473,7 +486,7 @@ main{
   cursor:pointer;
 
   box-shadow:
-    0 3px 10px rgba(39,105,124,.05);
+    0 3px 10px rgba(40,75,45,.05);
 }
 
 .more-button:active{
@@ -488,18 +501,18 @@ main{
 .business-days{
   background:#fff;
 
-  border:1px solid #cce6ed;
+  border:1px solid #d1ddcc;
 
   border-radius:14px;
 
   padding:17px;
 
   box-shadow:
-    0 3px 12px rgba(39,105,124,.07);
+    0 3px 12px rgba(40,75,45,.08);
 }
 
 .day-main{
-  color:#176f87;
+  color:#28643a;
 
   font-size:17px;
   font-weight:900;
@@ -508,7 +521,7 @@ main{
 .day-sub{
   margin-top:7px;
 
-  color:#6d7d83;
+  color:#6d7d71;
 
   font-size:12px;
 
@@ -523,14 +536,14 @@ main{
 .location-box{
   background:#fff;
 
-  border:1px solid #cce6ed;
+  border:1px solid #d1ddcc;
 
   border-radius:14px;
 
   padding:17px;
 
   box-shadow:
-    0 3px 12px rgba(39,105,124,.07);
+    0 3px 12px rgba(40,75,45,.08);
 }
 
 .location-name{
@@ -541,66 +554,46 @@ main{
 .location-sub{
   margin-top:5px;
 
-  color:#687980;
+  color:#68776e;
 
   font-size:12px;
 }
 
-.fake-map{
-  height:160px;
+.google-map{
+  width:100%;
+
+  height:190px;
 
   margin-top:14px;
 
+  border:0;
+
   border-radius:11px;
 
-  position:relative;
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      35deg,
-      transparent 47%,
-      rgba(255,255,255,.8) 48%,
-      rgba(255,255,255,.8) 51%,
-      transparent 52%
-    ),
-    linear-gradient(
-      125deg,
-      transparent 46%,
-      rgba(255,255,255,.8) 47%,
-      rgba(255,255,255,.8) 50%,
-      transparent 51%
-    ),
-    #d9edf1;
+  display:block;
 }
 
-.map-label{
-  position:absolute;
+.map-link{
+  display:block;
 
-  left:50%;
-  top:50%;
+  text-align:center;
 
-  transform:translate(-50%,-50%);
+  margin-top:10px;
 
-  background:#fff;
+  padding:12px;
 
-  border:2px solid #63aabd;
+  border-radius:10px;
 
-  border-radius:50%;
+  background:#f1f5ed;
 
-  width:48px;
-  height:48px;
+  border:1px solid #cbd9c5;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  color:#2d6539;
 
-  color:#177e98;
+  text-decoration:none;
 
-  font-size:21px;
+  font-size:12px;
   font-weight:900;
-
-  box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
 
@@ -619,24 +612,25 @@ main{
 .full-menu{
   background:#fff;
 
-  border:1px solid #cce6ed;
+  border:1px solid #d1ddcc;
 
   border-radius:14px;
 
   overflow:hidden;
 
   box-shadow:
-    0 3px 12px rgba(39,105,124,.07);
+    0 3px 12px rgba(40,75,45,.08);
 }
 
 .menu-row{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
 
   padding:16px 14px;
 
-  border-bottom:1px solid #e2f0f3;
+  border-bottom:1px solid #e3ebe0;
 }
 
 .menu-row:last-child{
@@ -649,7 +643,7 @@ main{
 }
 
 .menu-row-price{
-  color:#16829d;
+  color:#9a6d21;
 
   font-size:13px;
   font-weight:900;
@@ -658,7 +652,7 @@ main{
 .category-title{
   margin:26px 0 11px;
 
-  color:#19758b;
+  color:#2d663b;
 
   font-size:14px;
   font-weight:900;
@@ -683,26 +677,30 @@ main{
   z-index:500;
 
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
 
-  background:rgba(255,255,255,.96);
+  background:rgba(250,252,247,.97);
 
-  border-top:1px solid #c9e3e9;
+  border-top:1px solid #cad9c7;
 
   backdrop-filter:blur(12px);
 
   box-shadow:
-    0 -4px 18px rgba(32,94,110,.08);
+    0 -4px 18px rgba(32,74,42,.10);
 }
 
 .nav-button{
   border:none;
+
   background:transparent;
 
-  color:#78939c;
+  color:#78907c;
 
   display:flex;
+
   flex-direction:column;
+
   justify-content:center;
   align-items:center;
 
@@ -720,7 +718,7 @@ main{
 }
 
 .nav-button.active{
-  color:#13819d;
+  color:#2d713d;
 }
 
 
@@ -741,12 +739,14 @@ main{
   .menu-name{
     font-size:12px;
   }
+
 }
 </style>
 </head>
 
 
 <body>
+
 
 <!-- =========================
      OPENING
@@ -757,24 +757,59 @@ main{
   <div class="result-board">
 
     <div class="board-title">
+
       <span>着順</span>
-      <span class="confirmed" id="confirmed">確定</span>
+
+      <span
+        class="confirmed"
+        id="confirmed">
+        確定
+      </span>
+
     </div>
 
-    <div class="result-row" id="row1">
-      <div class="rank">1着</div>
-      <div class="name">馬</div>
+
+    <div
+      class="result-row"
+      id="row1">
+
+      <div class="rank">
+        1着
+      </div>
+
+      <div class="name">
+        馬
+      </div>
+
     </div>
 
-    <div class="result-row" id="row2">
-      <div class="rank">2着</div>
-      <div class="name">ん</div>
+
+    <div
+      class="result-row"
+      id="row2">
+
+      <div class="rank">
+        2着
+      </div>
+
+      <div class="name">
+        ん
+      </div>
+
     </div>
 
-    <div class="result-row" id="row3">
-      <div class="rank">3着</div>
-      <div class="name">軒</div>
-    </div>
+
+    <div
+      class="result-row"
+      id="row3">
+
+      <div class="rank">
+        3着
+      </div>
+
+      <div class="name">
+        軒
+      </div>
 
     </div>
 
@@ -788,9 +823,11 @@ main{
 ========================= -->
 
 <header>
+
   <div class="header-title">
     馬ん軒
   </div>
+
 </header>
 
 
@@ -798,7 +835,12 @@ main{
      HOME
 ========================= -->
 
-<div id="homePage" class="page active">
+<div
+  id="homePage"
+  class="page active">
+
+
+  <!-- HERO -->
 
   <section class="hero">
 
@@ -809,7 +851,7 @@ main{
       </div>
 
       <div class="hero-sub">
-        高知競馬場 4F 指定席食堂
+        競馬開催日に営業
       </div>
 
     </div>
@@ -819,9 +861,11 @@ main{
 
   <main>
 
-    <!-- BUSINESS -->
+
+    <!-- BUSINESS INFO -->
 
     <div class="business-info">
+
 
       <div class="info-box">
 
@@ -831,12 +875,18 @@ main{
 
         <div
           id="openStatus"
-          class="info-main open-status">
-          営業中
+          class="info-main closed-status">
+
+          確認中
+
         </div>
 
-        <div class="info-sub">
-          高知競馬開催日
+        <div
+          id="statusSub"
+          class="info-sub">
+
+          開催日を確認しています
+
         </div>
 
       </div>
@@ -857,6 +907,7 @@ main{
         </div>
 
       </div>
+
 
     </div>
 
@@ -879,6 +930,7 @@ main{
 
 
       <div class="menu-grid">
+
 
         <div class="menu-card">
 
@@ -942,6 +994,7 @@ main{
 
         </div>
 
+
       </div>
 
 
@@ -952,6 +1005,7 @@ main{
         メニューをすべて見る　›
 
       </button>
+
 
     </section>
 
@@ -974,6 +1028,7 @@ main{
 
 
       <div class="menu-grid">
+
 
         <div class="menu-card">
 
@@ -1037,6 +1092,7 @@ main{
 
         </div>
 
+
       </div>
 
 
@@ -1048,6 +1104,7 @@ main{
 
       </button>
 
+
     </section>
 
 
@@ -1056,6 +1113,7 @@ main{
     <section
       id="businessDays"
       class="section">
+
 
       <div class="section-head">
 
@@ -1072,16 +1130,26 @@ main{
 
       <div class="business-days">
 
-        <div class="day-main">
-          高知競馬開催日に営業
+        <div
+          class="day-main"
+          id="nextRaceDay">
+
+          開催日を確認中
+
         </div>
 
-        <div class="day-sub">
-          営業日は高知競馬の開催日に準じます。<br>
-          開催状況をご確認のうえご来店ください。
+
+        <div
+          class="day-sub"
+          id="dayDescription">
+
+          開催日は公式日程をもとに判定します。<br>
+          日程変更があった場合は、開催日データの更新が必要です。
+
         </div>
 
       </div>
+
 
     </section>
 
@@ -1091,6 +1159,7 @@ main{
     <section
       id="location"
       class="section">
+
 
       <div class="section-head">
 
@@ -1107,26 +1176,42 @@ main{
 
       <div class="location-box">
 
+
         <div class="location-name">
-          高知競馬場 4F 指定席
+          高知県高知市長浜宮田2000
         </div>
+
 
         <div class="location-sub">
-          競馬を観ながら食事を楽しめる指定席食堂です。
+          馬ん軒の所在地
         </div>
 
 
-        <div class="fake-map">
+        <iframe
+          class="google-map"
+          src="https://www.google.com/maps?q=高知県高知市長浜宮田2000&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
 
-          <div class="map-label">
-            馬
-          </div>
 
-        </div>
+        <a
+          class="map-link"
+          href="https://www.google.com/maps/search/?api=1&query=高知県高知市長浜宮田2000"
+          target="_blank"
+          rel="noopener">
+
+          Googleマップで開く　›
+
+        </a>
+
 
       </div>
 
+
     </section>
+
 
   </main>
 
@@ -1137,11 +1222,16 @@ main{
      MENU PAGE
 ========================= -->
 
-<div id="menuPage" class="page">
+<div
+  id="menuPage"
+  class="page">
+
 
   <main>
 
+
     <section class="section">
+
 
       <div class="section-head">
 
@@ -1160,43 +1250,61 @@ main{
         FOOD
       </div>
 
+
       <div class="full-menu">
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             からあげ
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             おすすめ料理
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             ごはんもの
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             その他
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
+
 
       </div>
 
@@ -1205,36 +1313,51 @@ main{
         DRINK
       </div>
 
+
       <div class="full-menu">
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             ビール
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             ソフトドリンク
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
         <div class="menu-row">
+
           <div class="menu-row-name">
             お茶
           </div>
+
           <div class="menu-row-price">
             ¥○○○
           </div>
+
         </div>
 
+
       </div>
+
 
     </section>
 
@@ -1249,13 +1372,19 @@ main{
 
 <nav class="bottom-nav">
 
+
   <button
     id="navHome"
     class="nav-button active"
     onclick="goHome()">
 
-    <span class="nav-icon">⌂</span>
-    <span>ホーム</span>
+    <span class="nav-icon">
+      ⌂
+    </span>
+
+    <span>
+      ホーム
+    </span>
 
   </button>
 
@@ -1265,8 +1394,13 @@ main{
     class="nav-button"
     onclick="showMenu()">
 
-    <span class="nav-icon">◇</span>
-    <span>メニュー</span>
+    <span class="nav-icon">
+      ◇
+    </span>
+
+    <span>
+      メニュー
+    </span>
 
   </button>
 
@@ -1276,52 +1410,68 @@ main{
     class="nav-button"
     onclick="goBusinessDays()">
 
-    <span class="nav-icon">□</span>
-    <span>営業日</span>
+    <span class="nav-icon">
+      □
+    </span>
+
+    <span>
+      営業日
+    </span>
 
   </button>
+
 
 </nav>
 
 
 <script>
 
+
 /* =========================
    OPENING ANIMATION
 ========================= */
 
-window.addEventListener("load", function(){
+window.addEventListener(
+  "load",
+  function(){
 
-  setTimeout(function(){
-    document.getElementById("row1")
-      .classList.add("show");
-  }, 500);
+    setTimeout(
+      () => document
+        .getElementById("row1")
+        .classList.add("show"),
+      500
+    );
 
+    setTimeout(
+      () => document
+        .getElementById("row2")
+        .classList.add("show"),
+      1100
+    );
 
-  setTimeout(function(){
-    document.getElementById("row2")
-      .classList.add("show");
-  }, 1100);
+    setTimeout(
+      () => document
+        .getElementById("row3")
+        .classList.add("show"),
+      1700
+    );
 
+    setTimeout(
+      () => document
+        .getElementById("confirmed")
+        .classList.add("show"),
+      2300
+    );
 
-  setTimeout(function(){
-    document.getElementById("row3")
-      .classList.add("show");
-  }, 1700);
+    setTimeout(
+      () => document
+        .getElementById("opening")
+        .classList.add("hide"),
+      3100
+    );
 
-
-  setTimeout(function(){
-    document.getElementById("confirmed")
-      .classList.add("show");
-  }, 2300);
-
-
-  setTimeout(function(){
-    document.getElementById("opening")
-      .classList.add("hide");
-  }, 3100);
-
-});
+  }
+);
 
 
 /* =========================
@@ -1330,49 +1480,61 @@ window.addEventListener("load", function(){
 
 function showMenu(){
 
-  document.getElementById("homePage")
+  document
+    .getElementById("homePage")
     .classList.remove("active");
 
-  document.getElementById("menuPage")
+  document
+    .getElementById("menuPage")
     .classList.add("active");
 
-  document.getElementById("navHome")
+  document
+    .getElementById("navHome")
     .classList.remove("active");
 
-  document.getElementById("navMenu")
+  document
+    .getElementById("navMenu")
     .classList.add("active");
 
-  document.getElementById("navDays")
+  document
+    .getElementById("navDays")
     .classList.remove("active");
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
 function goHome(){
 
-  document.getElementById("menuPage")
+  document
+    .getElementById("menuPage")
     .classList.remove("active");
 
-  document.getElementById("homePage")
+  document
+    .getElementById("homePage")
     .classList.add("active");
 
-  document.getElementById("navMenu")
+  document
+    .getElementById("navMenu")
     .classList.remove("active");
 
-  document.getElementById("navHome")
+  document
+    .getElementById("navHome")
     .classList.add("active");
 
-  document.getElementById("navDays")
+  document
+    .getElementById("navDays")
     .classList.remove("active");
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
@@ -1380,75 +1542,37 @@ function goBusinessDays(){
 
   goHome();
 
-  setTimeout(function(){
+  setTimeout(
+    function(){
 
-    document.getElementById("businessDays")
-      .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
+      document
+        .getElementById("businessDays")
+        .scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
 
-  },100);
+    },
+    100
+  );
 
-  document.getElementById("navHome")
+  document
+    .getElementById("navHome")
     .classList.remove("active");
 
-  document.getElementById("navDays")
+  document
+    .getElementById("navDays")
     .classList.add("active");
+
 }
 
 
 /* =========================
-   OPEN / CLOSED
+   KOCHI RACE DAYS
 ========================= */
 
-function updateBusinessStatus(){
+const kochiRaceDays = [
 
-  const now = new Date();
-
-  const hour = now.getHours();
-  const minute = now.getMinutes();
-
-  const current =
-    hour * 60 + minute;
-
-  const start =
-    12 * 60;
-
-  const end =
-    20 * 60 + 30;
-
-  const status =
-    document.getElementById("openStatus");
-
-  if(current >= start && current <= end){
-
-    status.textContent =
-      "営業中";
-
-    status.className =
-      "info-main open-status";
-
-  }else{
-
-    status.textContent =
-      "営業時間外";
-
-    status.className =
-      "info-main closed-status";
-
-  }
-
-}
-
-updateBusinessStatus();
-
-setInterval(
-  updateBusinessStatus,
-  60000
-);
-
-</script>
-
-</body>
-</html>
+  "2026-03-01",
+  "2026-03-08",
+  "2026-03-14
